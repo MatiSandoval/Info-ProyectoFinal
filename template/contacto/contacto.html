@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block contenido %}
+
+<div class = "container"> 
+    <h1>{{ mensaje }}</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+            <div class="row">
+
+                {{ form }}
+
+            </div>
+            <button type="submit" class="btn btn-success">Enviar</button>
+
+
+    </form>
+</div>
+{% endblock %}
