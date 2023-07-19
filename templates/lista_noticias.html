@@ -1,0 +1,10 @@
+<h2>Noticias</h2>
+
+{% for noticia in noticias %}
+    <h3>{{ noticia.titulo }}</h3>
+    <p>{{ noticia.fecha_publicacion }}</p>
+    <p>{{ noticia.contenido }}</p>
+    <hr>
+{% empty %}
+    <p>No hay noticias disponibles.</p>
+{% endfor %}
