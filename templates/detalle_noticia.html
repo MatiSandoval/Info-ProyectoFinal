@@ -1,0 +1,9 @@
+<h2>Detalles de la noticia</h2>
+
+<p>Título: {{ noticia.titulo }}</p>
+<p>Contenido: {{ noticia.contenido }}</p>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <button type="submit">Eliminar noticia</button>
+</form>
