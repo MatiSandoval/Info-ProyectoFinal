@@ -1,0 +1,184 @@
+body{
+  background: none;
+  font-size: 16px;
+  font-family: 'Raleway', sans-serif;
+}
+html{
+  overflow-x: hidden;
+}
+
+.home{
+  display: flex;
+  flex-wrap: wrap;
+}  
+
+button{
+  margin:20px;
+}
+
+
+nav ul li{
+  padding: 10px;
+  }
+
+section{
+  background-color: #ffffff;
+}
+.heading{
+  text-align: center;
+  background: #04471C;
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size:3.5rem;
+  text-transform: uppercase;
+  padding:1rem;
+}
+
+
+
+
+.btn:hover{
+  transform: scale(1.5);
+}
+.container-fluid a {
+  color:white;
+}
+.detalles .caja-contenedor {
+  width:10px;
+  background-color: rgba(149, 255, 116, 0.726);
+  border-radius: .5rem;
+  
+  text-align: center;
+  transition: .2s linear;
+  width: auto;
+  height: auto;
+ 
+}
+.detalles .carousel{
+  align-items: center;
+  padding-top: 0rem;
+  
+}
+.detalles .caja-contenedor #carouselExampleDark .carousel-item img {
+  /* Establecer el tamaño deseado */
+  width: 30rem; /* Puedes usar valores en píxeles, porcentajes o cualquier otra unidad CSS */
+  height: 50rem;
+  /* Centrar horizontalmente las imágenes */
+  margin-left: 0px;
+  margin-right: auto;
+}
+.detalles .caja-contenedor #carouselExampleDark .carousel-item h5{
+  color:whitesmoke;
+}
+.detalles .caja-contenedor #carouselExampleDark .carousel-item p{
+  color:whitesmoke;
+}
+.detalles .caja-contenedor h1{
+  color:rgb(6, 73, 6);
+}
+.detalles .caja-contenedor h5{
+  font-size: 2rem;
+  color: #333;
+  padding-top: 1rem;
+  margin-top: 10rem;
+}
+.footer{
+  padding-top: 3rem;
+  background-color: #04471C; 
+  color:whitesmoke;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 3rem;
+}
+
+.footer .caja-contenedor{
+  display:flex;
+  flex-wrap: wrap;
+   background-color: #04471C; 
+}
+
+.footer .caja-contenedor .caja {
+  flex: 1 1 25rem;
+  margin: .5rem;
+  align-items: center;
+}
+
+.footer .caja-contenedor .caja h3{
+  font-size: 2.5rem;
+  padding: 1rem 0;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+}
+
+.footer .caja-contenedor .caja .busca h3{
+  font-size: 3rem;
+}
+.footer .caja-contenedor .caja .busca h4{
+  font-size: 2.5rem;
+  padding: 1rem 0;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+}
+.footer .caja-contenedor .caja .busca .colaboradores{
+  text-align: center;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+}
+.footer .caja-contenedor .caja p{
+  font-size: 1.5rem;
+  padding: .5rem 0;
+  color: rgb(255, 255, 255);
+  text-align: justify;
+}
+
+.footer .caja-contenedor .caja .busca a{
+  display: block;
+  font-size: 2.5rem;
+  padding: .5rem 0;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.footer .caja-contenedor .caja .busca a:hover{
+  text-decoration: underline;
+}
+
+.footer .caja-contenedor .caja .info {
+  display: flex;
+  align-items: center;
+ 
+}
+
+.footer .caja-contenedor .caja .info .icono{
+  margin: .5rem 0;
+  margin-right: 2rem;
+  font-size: 1.8rem;
+  background:whitesmoke;
+  color:rgb(41, 98, 255);
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.5rem;
+  text-align: center;
+  border-radius:50%;
+  
+}
+.footer .caja-contenedor .caja img{
+  width: 200px;
+  margin-left: 6rem;
+  align-items: center;
+}
+.footer .creditos {
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: .1rem;
+  color:ghostwhite;
+  
+  border-top: .1rem solid ghostwhite;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  
+}
+
+
