@@ -9,7 +9,7 @@ class RegistroUsusarioForm(UserCreationForm):
     class Meta:
         model = Usuario
         fields = ['username', 'first_name', 'last_name', 'password1', 'password2', 'email', 'imagen']
-
+    
 
     class LoginForm(forms.Form):
         username = forms.CharField(label='Nombre de usuario')
@@ -21,3 +21,4 @@ class RegistroUsusarioForm(UserCreationForm):
             user = authenticate(request, username=username, password=password)
             if user :
                 login (request, user)
+    
