@@ -28,7 +28,7 @@ urlpatterns = [
     path('', include('apps.articulo.urls')),
     path('', include('apps.contacto.urls')),
     path('', include('apps.comentario.urls')),
-
+    path('', include('apps.usuario.urls'))
 
 ]
 

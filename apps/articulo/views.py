@@ -3,7 +3,7 @@ from .models import Articulo
 from django.views import View
 from .models import Noticia
 from .forms import NoticiaForm
- 
+from .forms import ArticuloForm
 
 #vista basada en funcion 
 
@@ -95,3 +95,12 @@ def acerca_de(request):
 
 def contacto(request):
     return render(request, 'contacto.html')
+def modificar(request,id):
+    articulos = Articulo.objects.get(id=id)
+    formulario = ArticuloForm(request.POST or None, request.FILES or None, instance=articulos)
+    
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect('apps.articulo:articulos')
+    
+    return render(request, 'articulos/modificar.html', {'formulario':formulario})
