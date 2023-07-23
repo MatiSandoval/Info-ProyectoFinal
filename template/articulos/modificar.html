@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Modificar articulo {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        Modificar un articulo
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del articulo</h4>
+        {% include 'articulos/form.html' %}
+        
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+
+{% endblock %}
