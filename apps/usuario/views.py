@@ -27,6 +27,7 @@ class LoginUsuario(LoginView):
         next_url = self.request.GET.get('next') or self.request.session.get('next')
         if next_url:
             self.request.session.pop('next', None)
+            
             messages.success(self.request, 'Login exitoso')
             return next_url
         else:

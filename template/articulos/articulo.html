@@ -24,7 +24,7 @@
             <a href="#"><img src=" {{ articulo.imagen.url }}" class="rounded-circle img-fluid border" style="width: 200px; height: 200px;"></a>
             <h5 class="text-center mt-3 mb-3">{{ articulo.resumen | capfirst }}</h5>
             
-            <p class="text-center"><a class= "btn btn-success" href="{% url 'apps.articulo:leer_articulo' articulo.id %}">Leer mas</a></p>
+            <p class="text-center"><a class= "btn btn-success" href="{% url 'apps.articulo:leer_articulo' articulo.id %}">Ver</a></p>
             
         </div>
       {% empty %}
