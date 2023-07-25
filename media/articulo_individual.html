@@ -83,8 +83,7 @@
                             <h6>Articulo:</h6>
                             <p>{{ articulos.contenido | capfirst }}</p>
                             
-                            
-                            <div class="row pb-3">
+                                <div class="row pb-3">
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Comentar</button>
                                     </div>
@@ -124,59 +123,65 @@
                                 <li>"comentario"</li>
                             </ul> 
                         </div>
-                    </div>
-                    <center>
-                        <section id="comentarios" class="py-5">
-                            <div class="container">
-                                </div class="row text-center p-2 pb-3">
-                                    <h4>comentarios</h4>
-                                <div>
 
-                                {% for comentario in comentarios %}
-                                <div class="p-2 pb-3">
-                                    <div class="product-wap card rounded-0">
-                                        <div class="card rounded-0">
-                                            <a>{{ comentario.usuario }} - {{ comentario.fecha }}</a>
+                        <div class="card-body">
+                            <center>
+                                <section id="comentarios" class="py-5"
+                                    <div class="container">
+                                        </div class="row text-center p-2 pb-3">
+                                            <h4>comentarios</h4>
+                                        <div>
+    
+                                        {% for comentario in comentaios %}
+                                        <div class="p-2 pb-3">
+                                            <div class="product-wap card rounded-0">
+                                                <div class="card rounded-0">
+                                                    <a>{{ comentario.usuario }} - {{comentario.fecha }}</a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                                        <p>{{ comentario.texto }}</p>
+                                                    </ul>
+                                                    {% if user.is_superuser %}
+                                                    <a class="btn btn-success btn-lg"
+                                                        href="{% url 'apps.comentario.eliminarComentario' comentario pk %}">Eliminar comentario</a>
+    
+                                                    {% endif %}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="card-body">
-                                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                                <p>{{ comentario.texto }}</p>
-                                            </ul>
-                                            {% if user.is_superuser %}
-                                            <a class="btn btn-success btn-lg"
-                                                href="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">Eliminar comentario</a>
+                                        {% empty %}
+                                        <li>No hay comentarios</li>
+                                        {% endfor %}
+    
+                                        <a id="comentario"></a>
+                                        <div class="comentario"></div>
+    
+                                            <form method="PORT" style="margin-bottom: 400px; margin-top: 100px;"action="">
+                                                {% csrf_token %}
+    
+                                                {{ if user.is_authenticated }}
+                                                <h2>Deja tu comentario</h2>
+                                                {{ form }}
+                                                <button class="btn btn-success btn-lg" type="submit">Enviar</button>
+                                                {% else %}
+                                                    <h2>Debes iniciar secion o registrarte</h2>
+                                                    <a class="btn btn-success btn-lg" href="{% url 'apps.usuario:login' %}"?next={{#}}></a>
+                                                    <input type="hidden" name="next" value="{{ request.path }}">
+    
+                                                {% endif %}
+                                            </form>
+    
+                                    <div>
+    
+    
+    
+                                </section>
+                            </center>
+    
+                        </div>
+                    
 
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                                {% empty %}
-                                <li>No hay comentarios</li>
-                                {% endfor %}
-
-                                <a id="comentario"></a>
-                                <div class="comentario"></div>
-
-                                    <form method="PORT" style="margin-bottom: 400px; margin-top: 100px;"action="">
-                                        {% csrf_token %}
-
-                                        {% if user.is_authenticated %}
-                                        <h2>Deja tu comentario</h2>
-                                        {{ form }}
-                                            <button class="btn btn-success btn-lg" type="submit">Enviar</button>
-                                        {% else %}
-                                            <h2>Debes iniciar sesion o registrarte</h2>
-                                            <a class="btn btn-success btn-lg" href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">Iniciar sesion</a>
-                                            <input type="hidden" name="next" value="{{ request.path }}">    
-
-                                        {% endif %}
-                                    </form>
-                                <div>
-                            <div>
-                        </section>
-                    </center>
-                </div>
-                </div>
             </div>
 
         </div>
