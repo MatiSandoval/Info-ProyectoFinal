@@ -84,13 +84,15 @@
                             <p>{{ articulos.contenido | capfirst }}</p>
                             
                             
-                            <div class="col d-grid">
-                                <a class="btn btn-success btn-lg" href="#comentario">Ir a comentario</a>
-                            </div>
-
-                            <div class="col d-grid">
-                                <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:modificar' articulos.id %}">Modificar</a>
-                            </div>
+                            <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <a class="btn btn-success btn-lg" href="#comentario">Ir a comentar</a>
+                                    </div>
+                                    
+                                    <div class="col d-grid">
+                                        <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:modificar' articulos.id %}">Modificar</a>
+                                    </div>
+                                </div>
 
                         </div>
                     </div>

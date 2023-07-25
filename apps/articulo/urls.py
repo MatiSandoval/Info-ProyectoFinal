@@ -8,6 +8,7 @@ app_name = 'apps.articulo'
 urlpatterns = [
     # path('articulos/', articulos, name = 'articulos'), #forma para definir funcion
     path('articulos/', ArticuloView.as_view(), name = 'articulos'),
+    path('articulos/<str:categorias>', ArticuloView.as_view(), name = 'articulos_por_categoria'),
     path('leer_articulo/<int:id>', views.leer_articulo, name = 'leer_articulo'),
     path('crear-noticia/', views.crear_noticia, name='crear_noticia'),
     path('noticias/', views.registro_noticias, name='registro_noticias'),
