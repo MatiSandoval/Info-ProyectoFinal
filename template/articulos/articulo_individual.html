@@ -84,14 +84,13 @@
                             <p>{{ articulos.contenido | capfirst }}</p>
                             
                             
-                            <div class="row pb-3">
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Comentar</button>
-                                    </div>
-                                    <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Modificar</button>
-                                    </div>
-                                </div>
+                            <div class="col d-grid">
+                                <a class="btn btn-success btn-lg" href="#comentario">Ir a comentario</a>
+                            </div>
+
+                            <div class="col d-grid">
+                                <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:modificar' articulos.id %}">Modificar</a>
+                            </div>
 
                         </div>
                     </div>
@@ -157,13 +156,13 @@
                                 <a id="comentario"></a>
                                 <div class="comentario"></div>
 
-                                    <form method="PORT" style="margin-bottom: 400px; margin-top: 100px;"action="">
+                                    <form method="POST" style="margin-bottom: 400px; margin-top: 100px;"action="{{ articulo.get_link_comentar }}">
                                         {% csrf_token %}
 
                                         {% if user.is_authenticated %}
                                         <h2>Deja tu comentario</h2>
                                         {{ form }}
-                                            <button class="btn btn-success btn-lg" type="submit">Enviar</button>
+                                            <button type="submit" class="btn btn-success btn-lg" >Comentar</button>
                                         {% else %}
                                             <h2>Debes iniciar sesion o registrarte</h2>
                                             <a class="btn btn-success btn-lg" href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">Iniciar sesion</a>

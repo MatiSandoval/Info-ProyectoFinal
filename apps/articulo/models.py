@@ -1,6 +1,7 @@
 from typing import Any, Dict, Tuple
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse_lazy
 
 #Create your models here.
 
@@ -39,5 +40,6 @@ class Articulo(models.Model):
         self.imagen.delete(self.imagen.name)
         super().delete()
         
-        
+    def get_link_comentar(self):
+        return reverse_lazy('apps.comentario:agregarComentario', args=[self.id])
     
