@@ -91,7 +91,7 @@ def categorias(request):
     return render(request, 'categorias.html')
 
 def acerca_de(request):
-    return render(request, 'acerca_de.html')
+    return render(request, 'acercade/acercade.html')
 
 def contacto(request):
     return render(request, 'contacto.html')

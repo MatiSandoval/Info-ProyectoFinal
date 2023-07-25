@@ -1,0 +1,48 @@
+   <!--Barra de navegación-->
+   {% load static %}
+   <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'assets/img/logo.png' %}" alt="" width="100px"> 
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+              </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'apps.articulo:articulos' %}">Articulos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'apps.contacto:contacto' %}">Contacto</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'apps.articulo:acerca_de' %}">Acerca de</a>
+                </li>
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Como hacer un CV
+                    </a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://www.uc3m.es/orientacionyempleo/media/orientacionyempleo/doc/archivo/doc_plantillascv/plantillas-de-cv-para-descargar-gratis.pdf">Descargar Plantillas</a></li>
+                    <li><a class="dropdown-item" href="http://fcial.uta.edu.ec/egresados/index/Manual%20para%20Curriculum%20Vitae.pdf">Descargar Guía</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#footer">Contáctanos</a></li>
+                    </ul>
+                </li> -->
+                
+            </ul>
+            <form class="d-flex" >
+                {% if user.is_authenticated %}
+                <a href="{% url 'apps.usuario:logout' %}" class="btn btn-secondary">Cerrar Sesion</a>
+                {% else %}
+                
+                <a href="{% url 'apps.usuario:login' %}" class="btn btn-success">Iniciar Sesion</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</nav>
