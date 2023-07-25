@@ -23,9 +23,9 @@ def comentar(request, id):
             comentario.usuario = request.user
             comentario.save()
             return redirect('leer_articulo', id=id)
-        else:
-            form = ComentarioForm()
-        return render(request, 'comentario/comentar.html', {'form' : form, 'articulo' : articulo})
+    else:
+        form = ComentarioForm()
+    return render(request, 'comentario/comentar.html', {'form' : form, 'articulo' : articulo})
     
 
 def listado_comentario(request):
@@ -52,13 +52,14 @@ def agregarComentario(request):
     }
     return render(request, 'comentario/agregarComentario.html', context)
 
-class DelateComentario(DeleteView):
+class DeleteComentario(DeleteView):
     model = Comentario
-    template_name = 'comentario/eliminarCometario.html'
+    template_name = 'comentario/eliminarComentario.html'
     success_url = reverse_lazy('apps.articulo:articulos')
 
 
+
 def detalle_articulo(request, articulo_id):
-    articulo = Articulo.objects.get(id=articulo.id)
+    articulo = Articulo.objects.get(id=articulo_id)
     comentario = Comentario.objects.filter(articulo=articulo)
     return render(request, 'detalle_articulo.html', {'articulo' : articulo, 'comentario' : comentario})
