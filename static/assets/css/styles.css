@@ -1,3 +1,30 @@
-#h2 {
-    color:green;
+/*Estilos con CSS para la sección Acerca de */
+#about-section {
+    padding: 20px;
 }
+
+/* Verde claro */
+#about-section.claro {
+    background-color: hsl(120, 60%, 80%);
+}
+
+/* Verde medio-claro */
+#about-section.medio-claro {
+    background-color: hsl(120, 60%, 60%);
+}
+
+/* Verde medio */
+#about-section.medio {
+    background-color: hsl(120, 60%, 40%);
+}
+
+/* Verde medio-oscuro */
+#about-section.medio-oscuro {
+    background-color: hsl(120, 60%, 30%);
+}
+
+/* Verde oscuro */
+#about-section.oscuro {
+    background-color: hsl(120, 60%, 20%);
+}
+
