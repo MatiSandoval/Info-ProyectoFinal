@@ -13,7 +13,8 @@ class MiFormulario(forms.Form):
     campo2 = forms.IntegerField(label='Campo 2')
     campo3 = forms.BooleanField(label='Campo 3')
     
+
 class ArticuloForm(forms.ModelForm):
     class Meta:
         model = Articulo
-        fields = ['titulo', 'resumen', 'contenido', 'imagen']
+        fields = ['titulo', 'resumen', 'contenido', 'imagen', 'estado', 'categoria']
