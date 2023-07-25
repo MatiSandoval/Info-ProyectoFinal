@@ -86,10 +86,11 @@
                             
                             <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Comentar</button>
+                                        <a class="btn btn-success btn-lg" href="#comentario">Comentar</a>
                                     </div>
+                                    
                                     <div class="col d-grid">
-                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Modificar</button>
+                                        <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:modificar' articulos.id %}">Modificar</a>
                                     </div>
                                 </div>
 
@@ -163,7 +164,7 @@
                                         {% if user.is_authenticated %}
                                         <h2>Deja tu comentario</h2>
                                         {{ form }}
-                                            <button class="btn btn-success btn-lg" type="submit">Enviar</button>
+                                            <a class="btn btn-success btn-lg" href="{% url 'apps.comentario:comentar' articulos.id %}">Enviar</a>
                                         {% else %}
                                             <h2>Debes iniciar sesion o registrarte</h2>
                                             <a class="btn btn-success btn-lg" href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">Iniciar sesion</a>
