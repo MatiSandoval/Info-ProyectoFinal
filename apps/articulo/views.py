@@ -4,6 +4,12 @@ from django.views import View
 from .models import Noticia
 from .forms import NoticiaForm
 from .forms import ArticuloForm
+from apps.comentario.forms import ComentarioForm
+from apps.comentario.models import Comentario
+from .models import Articulo, Categoria
+
+
+
 
 #vista basada en funcion 
 
@@ -16,9 +22,29 @@ from .forms import ArticuloForm
 class ArticuloView(View):
     template_name = 'articulos/articulo.html'
 
-    def get(self, request):
-        articulos = Articulo.objects.all()
-        return render(request, 'articulos/articulo.html', {'articulos' : articulos})
+    def get(self, request, categoria=None, orden=None, fecha=None):
+        orden = request.GET.get('orden')
+        fecha = request.GET.get('fecha')
+        print('fecha:', fecha)
+
+        if categoria:
+            articulos = Articulo.objects.filter(categoria__nombre = categoria)
+        else:
+            articulos = Articulo.objects.all()
+
+        if orden == 'ascendente':
+            articulos = articulos.order_by('titulo')
+        
+        elif orden == 'descendente':
+            articulos = articulos.order_by('-titulo')
+
+        if fecha:
+            articulos = articulos.filter(fecha_publicacion__date = fecha)
+
+        categorias = Categoria.objects.all()
+
+        return render(request, 'articulos/articulo.html', {'articulos' : articulos, 'categorias' : categorias})
+
 
 
 def existe_articulo(id):
@@ -31,13 +57,55 @@ def leer_articulo(request, id):
         articulos = existe_articulo(id)
 
     except Exception:
-        articulos = Articulo.objects.get(id = id)
+        articulos = Articulo.objects.get(id=id)
+        comentarios = Comentario.objects.filter(articulo=id)
 
-        context = {
-            'articulos' : articulos
-        }
+    form = ComentarioForm(request.POST or None)
+    if form.is_valid():
+        print(f"Form is valid: {form.is_valid()}")
+        if not form.is_valid():
+            print(form.errors)
+        if request.user.is_authenticated:
+            aux = form.save(commit=False)
+            aux.articulo = articulos
+            aux.usuario = request.user
+            aux.save()
+            form = ComentarioForm()
+
+        else:
+            return redirect('usuario:login')
+
+    context = {
+        'articulos' : articulos,
+        'form': form,
+        'comentarios' : comentarios,
+    }
 
     return render(request, 'articulos/articulo_individual.html', context)
+
+def articulo_crear(request):
+    if request.method == 'POST':
+        form = ArticuloForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(f'Form is valid: {form.is_valid()}')
+            form.save()
+            return redirect('articulos')
+    else:
+        form = ArticuloForm()
+    return render(request, 'articulo/articulo_form.html', {'form':form})
+
+def articulo_actualizar(request, pk):
+    articulo = get_object_or_404(Articulo, pk = pk)
+    if request.method == 'POST':
+        form = ArticuloForm(request.POST, request.FILES, instance=articulo)
+        if form.is_valid():
+            form.save
+            return redirect('articulos')
+        
+    else:
+        form = ArticuloForm(instance=articulo)
+    return render(request, 'articulos/articulo_form.html', {'form':form})
+        
 
 ## Agrego lo relacionado con el desafío para crear noticias
 def crear_noticia(request):
