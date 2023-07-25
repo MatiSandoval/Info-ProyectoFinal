@@ -19,5 +19,8 @@ urlpatterns = [
     path('contacto/', views.contacto, name='contacto'),
     path('modificar/',views.modificar, name='modificar'),
     path('modificar/<int:id>',views.modificar, name='modificar'),
+    path('existe_articulo/', views.existe_articulo, name='existe_articulo'),
+    path('articulo_crear/', views.articulo_crear, name='articulo_crear'),
+
 ]
  
