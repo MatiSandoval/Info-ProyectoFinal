@@ -10,25 +10,16 @@ from .models import Articulo, Categoria
 
 
 
-
-#vista basada en funcion 
-
-# def articulos(request):
-#     articulos = Articulo.objects.all()
-#     return render(request, 'articulo.html', {'articulos' : articulos})
-
-# #vista basada en clases
-
 class ArticuloView(View):
     template_name = 'articulos/articulo.html'
 
-    def get(self, request, categoria=None, orden=None, fecha=None):
+    def get(self, request, categorias=None, orden=None, fecha=None):
         orden = request.GET.get('orden')
         fecha = request.GET.get('fecha')
         print('fecha:', fecha)
 
-        if categoria:
-            articulos = Articulo.objects.filter(categoria__nombre = categoria)
+        if categorias:
+            articulos = Articulo.objects.filter(categoria = categorias)
         else:
             articulos = Articulo.objects.all()
 
@@ -38,8 +29,11 @@ class ArticuloView(View):
         elif orden == 'descendente':
             articulos = articulos.order_by('-titulo')
 
-        if fecha:
-            articulos = articulos.filter(fecha_publicacion__date = fecha)
+        if fecha == 'ascendente':
+            articulos = articulos.order_by('fecha_publicacion')
+        
+        elif fecha == 'descendente':
+            articulos = articulos.order_by('-fecha_publicacion')
 
         categorias = Categoria.objects.all()
 
