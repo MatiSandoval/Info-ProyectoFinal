@@ -33,54 +33,7 @@
   </head>
 
 <body>
-    <!--Barra de navegación-->
-    <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'index' %}">
-                <img src="{% static 'assets/img/logo.png' %}" alt="" width="100px"> 
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'index' %}">Inicio</a>
-                  </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'apps.articulo:articulos' %}">Articulos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'apps.contacto:contacto' %}">Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'apps.articulo:acerca_de' %}">Acerca de</a>
-                    </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Como hacer un CV
-                        </a>
-                        <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="https://www.uc3m.es/orientacionyempleo/media/orientacionyempleo/doc/archivo/doc_plantillascv/plantillas-de-cv-para-descargar-gratis.pdf">Descargar Plantillas</a></li>
-                        <li><a class="dropdown-item" href="http://fcial.uta.edu.ec/egresados/index/Manual%20para%20Curriculum%20Vitae.pdf">Descargar Guía</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#footer">Contáctanos</a></li>
-                        </ul>
-                    </li> -->
-                    
-                </ul>
-                <form class="d-flex" >
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'apps.usuario:logout' %}" class="btn btn-secondary">Cerrar Sesion</a>
-                    {% else %}
-                    
-                    <a href="{% url 'apps.usuario:login' %}" class="btn btn-success">Iniciar Sesion</a>
-                    {% endif %}
-                </form>
-            </div>
-        </div>
-    </nav>
-    
+ {% include 'navbar.html' %} 
 
 
     
@@ -160,68 +113,11 @@
 </section>
 {% endblock contenido %}
 
+{% include 'footer.html' %}
 
-
-
-  
 
  
-    <footer class="bg-custom">
-        <div class="footer">
-        <div class="caja-contenedor">
-            <div class="caja">
-                <img src="{% static 'assets/img/logo.png' %}" alt="">
-                <h3>Noticias e informacion</h3>
-                <p>Este es el proyecto final del curso "Informatorio, etapa 2".</p>
-                
-            </div>
-            <div class="caja">
-                <div class="busca">
-                <h3>Buscanos en</h3>
-                <a href="https://www.facebook.com/profile/">Facebook</a>
-                <a href="https://www.instagram.com/">Instagram</a>
-                <a href="https://twitter.com/?lang=es">Twitter</a>
-                <a href="https://linkedin.com/">LinkedIn</a> 
-                </div>
-            </div>
-            <div class="caja">
-              <div class="info">
-                  
-                  <div class="colaboradores">
-                    <h3>Colaboradores</h3>
-                  <h4 href="#">Acevedo, Cristian</h4>
-                  <h4 href="#">Menjoulet, Felipe</h4>
-                  <h4 href="#">Sandoval, Matías</h4>
-                  <h4 href="#">Clerici, Silvana</h4>
-                  <h4 href="#">Mustafa, Amir</h4>
-                  <h4 href="#">Gonzalez, Mauro</h4>
-                  <h4 href="#">Robeff, Santiago</h4>
-                  <h4 href="#">Betcker, Brian</h4>
-                  <h4 href="#">Barrios, Roberto</h4>
-                  <h4 href="#">Gomez, Franco</h4>
-
-                </div>
-              </div>
-            </div>
-            <div class="caja">
-                <h3>Mas informacion</h3>
-                <div class="info">
-                    <div class="icono"><i class="fas fa-phone"></i></div>
-                    <p>+54 9 3624-657352 <br>+54 9 3624-001122</p>
-                </div>
-                <div class="info">
-                    <div class="icono"><i class="fas fa-envelope"></i></div>
-                    <p>ejemplo@ejemplo.com.ar <br>juanperez76@ejemplo.com</p>
-                </div>
-                <div class="info">
-                    <div class="icono"><i class="fas fa-map-marker-alt"></i></div>
-                    <p>Chaco, Argentina <br>Resistencia</p>
-                </div>
-            </div>
-        </div>
-        <h1 class="creditos">Copyright @ 2023 Grupo 4</h1>
-        </div>
-    </footer>
+   
 
 
 
