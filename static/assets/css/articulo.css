@@ -1,0 +1,89 @@
+.articulo-contenedor {
+    background-color: #d8f6d8;
+    /* Cambia este color por el que desees */
+}
+
+
+.articulo-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 20rem;
+    background-color: rgb(236, 236, 236);
+    border: .1rem solid rgba(17, 85, 34, 0.754);
+    box-shadow: 0 .5rem 1rem rgba(16, 80, 24, 0.1);
+    margin: 2rem;
+    padding: 3rem 2rem;
+    margin-left: 3rem;
+    transition: .2s linear;
+    width: 35rem;
+    height: 60rem;
+    border-color: rgb(31, 69, 16);
+    border-radius: 2rem;
+    border-width: 1rem;
+}
+.articulo-contenedor .resumen{
+    text-align: justify;
+}
+#imagen-articulo{
+    margin:auto;
+    width: auto;
+    height: 20rem;
+}
+#titulo{
+    text-transform: uppercase;
+}
+#public{
+    color:rgb(167, 161, 149);
+    font-family: 'Courier New', Courier, monospace;
+    text-align:right;
+    
+}
+#contacto{
+    text-transform: uppercase;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    align-items: center;
+    text-align: center;
+}
+#btncontacto{
+    align-items: center;
+    margin-left: 35rem;
+    width: 7rem;
+    height: 3rem;
+    text-transform: uppercase;
+}
+.articulo-contenedor .fecha{
+    color: rgb(110, 110, 107);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    
+}
+#articulos-row{
+    margin-top: 3rem;
+}
+#filtro-botona {
+    padding: 6px 8px 6px 8px;
+    margin-left: -2rem;
+    margin-top: 1rem;
+}
+#filtro-botonc {
+    padding: 6px 8px 6px 8px;
+    margin-left: -2rem;
+    margin-top: 1rem;
+}
+#filtro-boton {
+    padding: 6px 8px 6px 8px;
+    margin-left: -2rem;
+    margin-top: 1rem;
+}
+#antiguedad {
+    width: 10rem;
+}
+#alfabetico {
+        width: 10rem;
+    }
+#categoria {
+        width: 10rem;
+    }

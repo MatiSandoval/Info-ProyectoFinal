@@ -6,6 +6,7 @@
 {% block contenido %}
 
 <div class = "container"> 
+    <h1 id="contacto">Ponte en contacto con nosotros:</h1>
     <h1>{{ mensaje }}</h1>
     <form action="" method="POST">
         {% csrf_token %}
@@ -14,7 +15,7 @@
                 {{ form }}
 
             </div>
-            <button type="submit" class="btn btn-success">Enviar</button>
+            <button type="submit" class="btn btn-success" id="btncontacto">Enviar</button>
 
 
     </form>
