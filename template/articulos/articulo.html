@@ -61,6 +61,13 @@
               <i class="fa fa-search"></i>
             </a>
           </div>
+          <div class="col-6">
+            {% for group in user.groups.all %}
+                {% if group.name == 'Colaborador'%}                          
+                <button type="submit" class="btn btn-success btn-lg" >Crear Articulo</button>
+                {% endif %}
+                {% endfor %}
+          </div>
           {% block script %}
           <script>
             function updateButtonURL() {
