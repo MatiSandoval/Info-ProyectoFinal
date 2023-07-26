@@ -12,23 +12,24 @@ class Categoria(models.Model):
         return self.nombre 
 
 class Noticia(models.Model):
-    titulo = models.CharField(max_length=60, null= False)
+    titulo = models.CharField(max_length=100, null= False)
     resumen = models.TextField(null=False)
     contenido = models.TextField(null=False)
     fecha_publicacion = models.DateTimeField(auto_now_add=False)
-    imagen = models.ImageField(null=True, blank=True, upload_to='articulo', default='articulo/default.jpg')
+    imagen = models.ImageField(null=True, blank=True, upload_to='articulo', default='articulo/imagen.jpg')
     estado = models.BooleanField(default=True)
     publicado = models.DateTimeField(default=timezone.now)
 
 class Articulo(models.Model):
-    titulo = models.CharField(max_length=60, null= False)
+    titulo = models.CharField(max_length=100, null= False)
     resumen = models.TextField(null=False)
     contenido = models.TextField(null=False)
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
-    imagen = models.ImageField(null=True, blank=True, upload_to='articulo', default='articulo/default.jpg')
+    imagen = models.ImageField(null=True, blank=True, upload_to='articulo', default='articulo/imagen.jpg')
     estado = models.BooleanField(default=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True, default='Sin categoria')
     publicado = models.DateTimeField(default=timezone.now)
+    
 
     class Meta:
         ordering = ('-publicado',)

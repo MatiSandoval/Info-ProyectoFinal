@@ -70,7 +70,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2">{{ articulos.titulo | capfirst }}</h1>
-
+                            <h5 id="public">Publicado: {{ articulos.fecha_publicacion | slice:":19" }}</h5>
+                            
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Resumen: </h6>
@@ -80,7 +81,7 @@
                                 </li>
                             </ul>
 
-                            <h6>Articulo:</h6>
+                            <h6>Contenido:</h6>
                             <p>{{ articulos.contenido | capfirst }}</p>
                             
                             
