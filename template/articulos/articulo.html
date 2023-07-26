@@ -12,9 +12,9 @@
       </div>
     </div>
     <div class="container-fluid" id="main-content">
-      <div class="container">
+      <div class="articulos-cont">
         <div class="row">
-          <div class="col-2">
+          <div class="col-2 alfa">
             <div class="filter-group">
               <label>Orden alfabético</label>
               <select class="form-control" id="alfabetico" onchange="updateButtonURL();">
@@ -23,13 +23,13 @@
               </select>
             </div>
           </div>
-          <div class="col-2">
+          <div class="col-2 balfa">
             <a class="btn btn-success btn-lg" id="filtro-boton"
               href="{% url 'apps.articulo:articulos' %}?orden=ascendente"><i class="fa fa-filter"></i></a>
           </div>
 
 
-          <div class="col-2">
+          <div class="col-2 fechaa">
             <div class="filter-group">
               <label>Antigüedad</label>
               <select class="form-control" id="antiguedad" onchange="updateButtonURL();">
@@ -38,11 +38,11 @@
               </select>
             </div>
           </div>
-          <div class="col-2">
+          <div class="col-2 fechab">
             <a class="btn btn-success btn-lg" id="filtro-botona"
               href="{% url 'apps.articulo:articulos' %}?fecha=ascendente"><i class="fa fa-filter"></i></a>
           </div>
-          <div class="col-2">
+          <div class="col-2 cate">
 
             <div class="filter-group">
               <label>Categoria</label>
@@ -60,15 +60,13 @@
             <a class="btn btn-success btn-lg" id="filtro-botonc" href="{% url 'apps.articulo:articulos' %}">
               <i class="fa fa-search"></i>
             </a>
-          </div>
-          <div class="col-6">
             {% for group in user.groups.all %}
-                {% if group.name == 'Colaborador'%} 
-                                        
-                <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:articulo_crear' %}">Agregar Articulo</a>
-                {% endif %}
-                {% endfor %}
+            {% if group.name == 'Colaborador'%}
+            <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:articulo_crear' %}" id="agregararticulo">Agregar Articulo</a>
+            {% endif %}
+            {% endfor %}
           </div>
+          
           {% block script %}
           <script>
             function updateButtonURL() {
