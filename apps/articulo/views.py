@@ -166,3 +166,4 @@ def modificar(request,id):
         return redirect('apps.articulo:articulos')
     
     return render(request, 'articulos/modificar.html', {'formulario':formulario})
+
