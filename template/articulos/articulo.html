@@ -1,19 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-<title> {% block title %} Articulos {% endblock title %} </title>
-
 {% block contenido %}
 
 <body>
-
   <!-- Start Categories of The Month -->
-  <section class="container py-5">
+  <section class="articulos">
     <div class="row text-center pt-3">
-        <div class="col-lg-6 m-auto">
-            <h1 class="h1">Articulos</h1>
-        </div>
+      <div class="col-lg-6 m-auto">
+        <h1 class="h1">ARTICULOS</h1>
+      </div>
     </div>
     <div class="container-fluid" id="main-content">
       <div class="container">
@@ -28,11 +24,11 @@
             </div>
           </div>
           <div class="col-2">
-            <a class="btn btn-success btn-lg" id="filtro-boton" href="{% url 'apps.articulo:articulos' %}?orden=ascendente"><i
-                class="fa fa-search"></i></a>
+            <a class="btn btn-success btn-lg" id="filtro-boton"
+              href="{% url 'apps.articulo:articulos' %}?orden=ascendente"><i class="fa fa-filter"></i></a>
           </div>
-          
-          
+
+
           <div class="col-2">
             <div class="filter-group">
               <label>Antigüedad</label>
@@ -43,11 +39,11 @@
             </div>
           </div>
           <div class="col-2">
-            <a class="btn btn-success btn-lg" id="filtro-botona" href="{% url 'apps.articulo:articulos' %}?fecha=ascendente"><i
-                class="fa fa-search"></i></a>
+            <a class="btn btn-success btn-lg" id="filtro-botona"
+              href="{% url 'apps.articulo:articulos' %}?fecha=ascendente"><i class="fa fa-filter"></i></a>
           </div>
           <div class="col-2">
-            
+
             <div class="filter-group">
               <label>Categoria</label>
               <select class="form-control" id="categoria" onchange="updateButtonURL();">
@@ -66,62 +62,65 @@
             </a>
           </div>
           {% block script %}
-          <script >
+          <script>
             function updateButtonURL() {
               //filtro orden alfabetico
-                const selector = document.getElementById("alfabetico");
-                const selectedValue = selector.options[selector.selectedIndex].value;
-                const boton = document.getElementById("filtro-boton");
-                const url = "{% url 'apps.articulo:articulos' %}?orden=" + selectedValue;
-                boton.href = url;
-                //filtro antigüedad
-                const selectora = document.getElementById("antiguedad");
-                const selectedValuea = selectora.options[selectora.selectedIndex].value;
-                const botona = document.getElementById("filtro-botona");
-                const urla = "{% url 'apps.articulo:articulos' %}?fecha=" + selectedValuea;
-                botona.href = urla;
-                 //filtro categorias
-                const selectorc = document.getElementById("categoria");
-                const selectedValuec = selectorc.options[selectorc.selectedIndex].value;
-                const botonc = document.getElementById("filtro-botonc");
-                var url2 = "{% url 'apps.articulo:articulos' %}";
-                if (selectedValuec == '1') {
-                  url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='1' %}";
-                } else if (selectedValuec == '2') {
-                  url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='2' %}";
-                } else if (selectedValuec == '3') {
-                  url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='3' %}";
-                } else if (selectedValuec == '4') {
-                  url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='4' %}";
-                } else if (selectedValuec == '5') {
-                  url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='5' %}";
-                } else if (selectedValuec == 'None') {
-                  url2 = "{% url 'apps.articulo:articulos' %}";
-                }
-                botonc.href = url2;
+              const selector = document.getElementById("alfabetico");
+              const selectedValue = selector.options[selector.selectedIndex].value;
+              const boton = document.getElementById("filtro-boton");
+              const url = "{% url 'apps.articulo:articulos' %}?orden=" + selectedValue;
+              boton.href = url;
+              //filtro antigüedad
+              const selectora = document.getElementById("antiguedad");
+              const selectedValuea = selectora.options[selectora.selectedIndex].value;
+              const botona = document.getElementById("filtro-botona");
+              const urla = "{% url 'apps.articulo:articulos' %}?fecha=" + selectedValuea;
+              botona.href = urla;
+              //filtro categorias
+              const selectorc = document.getElementById("categoria");
+              const selectedValuec = selectorc.options[selectorc.selectedIndex].value;
+              const botonc = document.getElementById("filtro-botonc");
+              var url2 = "{% url 'apps.articulo:articulos' %}";
+              if (selectedValuec == '1') {
+                url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='1' %}";
+              } else if (selectedValuec == '2') {
+                url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='2' %}";
+              } else if (selectedValuec == '3') {
+                url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='3' %}";
+              } else if (selectedValuec == '4') {
+                url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='4' %}";
+              } else if (selectedValuec == '5') {
+                url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='5' %}";
+              } else if (selectedValuec == 'None') {
+                url2 = "{% url 'apps.articulo:articulos' %}";
               }
+              botonc.href = url2;
+            }
           </script>
           {% endblock %}
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="articulos-row">
       {% for articulo in articulos %}
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <h4 class="text-center mt-3 mb-3"> {{ articulo.titulo | capfirst }} </h4>
-            <a href="#"><img src=" {{ articulo.imagen.url }}" class="rounded-circle img-fluid border" style="width: 200px; height: 200px;"></a>
-            <h5 class="text-center mt-3 mb-3">{{ articulo.resumen | capfirst }}</h5>
-            
-            <p class="text-center"><a class= "btn btn-success" href="{% url 'apps.articulo:leer_articulo' articulo.id %}">Leer mas</a></p>
-            
-        </div>
+      <div class="col-4 col-md-4 p-5 mt-3 articulo-contenedor">
+        <h4 class="text-center mt-3 mb-3" id="titulo"> {{ articulo.titulo | capfirst }} </h4>
+        <a href="#"><img src=" {{ articulo.imagen.url }}" class=" img-fluid border" id="imagen-articulo"></a>
+        <h5 class="mb-3 resumen">{{ articulo.resumen | slice:":600" }}</h5>
+        <h5 class="mb-3 fecha">Publicado: {{ articulo.fecha_publicacion | slice:":19" }}</h5>
+        
+        <p class="text-center"><a class="btn btn-success"
+            href="{% url 'apps.articulo:leer_articulo' articulo.id %}">Leer
+            mas</a></p>
+
+      </div>
+
       {% empty %}
-        <li> No hay articulos </li>
+      <li> No hay articulos </li>
       {% endfor %}
-    <div>
+    </div>
   </section>
-<!-- End Categories of The Month -->
+  <!-- End Categories of The Month -->
 
 </body>
-</html>
 {% endblock contenido %}
