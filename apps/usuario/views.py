@@ -44,4 +44,4 @@ class LogoutUsuario(LogoutView):
         return response
         
     def get_next_page(self):
-        return reverse('login')
+        return reverse('apps.usuario:login')
