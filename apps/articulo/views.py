@@ -81,10 +81,10 @@ def articulo_crear(request):
         if form.is_valid():
             print(f'Form is valid: {form.is_valid()}')
             form.save()
-            return redirect('articulos')
+            return redirect('apps.articulo:articulos')
     else:
         form = ArticuloForm()
-    return render(request, 'articulo/articulo_form.html', {'form':form})
+    return render(request, 'articulos/articulo_form.html', {'form': form})
 
 def articulo_actualizar(request, pk):
     articulo = get_object_or_404(Articulo, pk = pk)
