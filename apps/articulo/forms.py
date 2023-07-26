@@ -1,11 +1,6 @@
 from django import forms
-from .models import Noticia
 from .models import Articulo
 
-class NoticiaForm(forms.ModelForm):
-    class Meta:
-        model = Noticia
-        fields = ['titulo', 'contenido', 'fecha_publicacion']
 
 #los campos tenemos que definirlos de acuerdo a nuestras necesidades
 class MiFormulario(forms.Form):
