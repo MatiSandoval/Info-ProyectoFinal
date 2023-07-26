@@ -11,14 +11,6 @@ class Categoria(models.Model):
     def __str__(self):
         return self.nombre 
 
-class Noticia(models.Model):
-    titulo = models.CharField(max_length=100, null= False)
-    resumen = models.TextField(null=False)
-    contenido = models.TextField(null=False)
-    fecha_publicacion = models.DateTimeField(auto_now_add=False)
-    imagen = models.ImageField(null=True, blank=True, upload_to='articulo', default='articulo/imagen.jpg')
-    estado = models.BooleanField(default=True)
-    publicado = models.DateTimeField(default=timezone.now)
 
 class Articulo(models.Model):
     titulo = models.CharField(max_length=100, null= False)
