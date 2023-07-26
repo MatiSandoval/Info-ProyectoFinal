@@ -1,27 +1,28 @@
 .articulo-contenedor {
-    background-color: #d8f6d8;
+    background-color: rgb(39, 181, 91);
     /* Cambia este color por el que desees */
 }
 
 
 .articulo-contenedor {
     display: flex;
-    align-items: center;
+    align-items:self-start;
     justify-content: center;
     flex-wrap: wrap;
-    padding-bottom: 20rem;
+    
     background-color: rgb(236, 236, 236);
     border: .1rem solid rgba(17, 85, 34, 0.754);
     box-shadow: 0 .5rem 1rem rgba(16, 80, 24, 0.1);
-    margin: 2rem;
+    margin: 1rem;
     padding: 3rem 2rem;
-    margin-left: 3rem;
+    margin-left: 2rem;
     transition: .2s linear;
     width: 35rem;
     height: 60rem;
     border-color: rgb(31, 69, 16);
     border-radius: 2rem;
     border-width: 1rem;
+    
 }
 .articulo-contenedor .resumen{
     text-align: justify;
@@ -65,25 +66,52 @@
 }
 #filtro-botona {
     padding: 6px 8px 6px 8px;
-    margin-left: -2rem;
+    margin-left: -10rem;
     margin-top: 1rem;
 }
 #filtro-botonc {
     padding: 6px 8px 6px 8px;
-    margin-left: -2rem;
+    margin-left: -6rem;
     margin-top: 1rem;
 }
 #filtro-boton {
     padding: 6px 8px 6px 8px;
-    margin-left: -2rem;
+    margin-left: 1rem;
     margin-top: 1rem;
 }
 #antiguedad {
-    width: 10rem;
+    width: 8rem;
+    
 }
 #alfabetico {
-        width: 10rem;
+        width: 8rem;
+        
+        
+        color:rgb(19, 19, 21);
     }
 #categoria {
-        width: 10rem;
+        width: 12rem;
+        
     }
+
+.articulos .container-fluid .articulos-cont {
+    
+    margin-right: .1rem;
+    margin-left: .1rem;
+    padding-left: -30rem;
+}
+.articulos .container-fluid .articulos-cont .row .alfa{
+    margin-right: -11rem;
+}
+.articulos .container-fluid .articulos-cont .row .fechaa {
+    margin-left: -3rem;
+}
+.articulos .container-fluid .articulos-cont .row .cate {
+    margin-left: -3rem;
+}
+
+#agregararticulo{
+    margin-left: 12rem;
+    width: auto;
+    height: auto;
+}
