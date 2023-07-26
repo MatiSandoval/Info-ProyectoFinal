@@ -63,8 +63,9 @@
           </div>
           <div class="col-6">
             {% for group in user.groups.all %}
-                {% if group.name == 'Colaborador'%}                          
-                <button type="submit" class="btn btn-success btn-lg" >Crear Articulo</button>
+                {% if group.name == 'Colaborador'%} 
+                                        
+                <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:articulo_crear' %}">Agregar Articulo</a>
                 {% endif %}
                 {% endfor %}
           </div>
