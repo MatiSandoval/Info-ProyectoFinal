@@ -10,4 +10,4 @@ class Comentario(models.Model):
     fecha = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.texto[:50]
+        return self.texto
