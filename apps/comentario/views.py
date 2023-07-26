@@ -38,19 +38,18 @@ def listado_comentario(request):
     }
     return render(request, 'comentario/listadoComentario.html', context)
 
-def agregarComentario(request):
-    usuario = Usuario(usuario, request.user)
-    form = ComentarioForm(request.POST or None)
+def agregarComentario(request, id):
+    if request.method == "POST":
+        form = ComentarioForm(data = request.POST)
+        form.instance.usuario = request.user
+        articulo = Articulo.objects.get(id=id)
+        form.instance.articulo = articulo
+        if form.is_valid():
+            form.save()
+        else:
+            return redirect('apps.articulo:leer_articulo', id, { 'comment_form': form})
+    return redirect('apps.articulo:leer_articulo', id)
 
-    if form.is_valid():
-        form.save()
-        form = ComentarioForm()
-
-    context = {
-        'form' : form,
-        'usuario' : usuario
-    }
-    return render(request, 'comentario/agregarComentario.html', context)
 
 class DeleteComentario(DeleteView):
     model = Comentario
