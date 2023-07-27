@@ -1,3 +1,0 @@
-virtualenv==20.23.1
-Django==3.2.19
-Pillow==9.5.0

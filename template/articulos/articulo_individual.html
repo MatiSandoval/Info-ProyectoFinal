@@ -44,7 +44,8 @@
                             {% if user.is_authenticated %}
 
                             <div class="col d-grid">
-                                <a class="btn btn-success btn-lg" href="#comentario">Ir a comentar</a>
+                                <a href="{% url 'apps.articulo:descargar_pdf' articulos.id %}" class="btn btn-primary">Descargar PDF</a>
+                                <!-- <a class="btn btn-success btn-lg" href="#comentario">Ir a comentar</a> -->
                             </div>
                             {% endif %}
                             {% for group in user.groups.all %}
@@ -74,35 +75,19 @@
 <!-- Start Article -->
 <section class="py-5">
     <div class="container">
-        <div class="row text-left p-2 pb-3">
-            <h4>Comentarios</h4>
+        <div class="row text-center p-2 pb-3">
+            <h1>Comentarios</h1>
         </div>
 
         <!--Start Carousel Wrapper-->
         <div id="carousel-related-product">
 
             <div class="p-2 pb-3">
-                <div class="product-wap card rounded-0">
-                    <div class="card rounded-0">
-                        <a href="">nombre</a>
-                        <br><br>
-                        <div
-                            class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <br><br>
-                        <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                            <li>"comentario"</li>
-                        </ul>
-                    </div>
-                </div>
+                
                 <center>
                     <section id="comentarios" class="py-5">
-                        <div class="container">
-                        </div class="row text-center p-2 pb-3">
-                        <h4>comentarios</h4>
-                        <div>
+                        <div class="container-com">
+                        
 
                             {% for comentario in comentarios %}
                             <div class="p-2 pb-3">
@@ -137,7 +122,7 @@
                                 </div>
                             </div>
                             {% empty %}
-                            <li>No hay comentarios</li>
+                            <li>Aún no hay comentarios, ¿quieres dejar una reseña?</li>
                             {% endfor %}
 
                             <a id="comentario"></a>
@@ -155,7 +140,7 @@
                                 {% endfor %}
                                 {% if user.is_authenticated %}
                                 {% else %}
-                                <h2>Debes iniciar sesion o registrarte</h2>
+                                <h2>Debes iniciar sesion para comentar</h2>
                                 <a class="btn btn-success btn-lg"
                                     href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">Iniciar
                                     sesion</a>
@@ -164,7 +149,7 @@
                                 {% endif %}
                             </form>
                             <div>
-                                <div>
+                            <div>
                     </section>
                 </center>
             </div>
