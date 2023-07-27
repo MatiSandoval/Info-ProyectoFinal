@@ -62,3 +62,17 @@ def detalle_articulo(request, articulo_id):
     articulo = Articulo.objects.get(id=articulo_id)
     comentario = Comentario.objects.filter(articulo=articulo)
     return render(request, 'detalle_articulo.html', {'articulo' : articulo, 'comentario' : comentario})
+
+@login_required
+def editar_comentario(request, comentario_id):
+    comentario = get_object_or_404(Comentario, id=comentario_id)
+
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST, instance=comentario)
+        if form.is_valid():
+            form.save()
+            return redirect('apps.articulo:leer_articulo', id=comentario.articulo.id)
+    else:
+        form = ComentarioForm(instance=comentario)
+
+    return render(request, 'comentario/editar_comentario.html', {'form': form, 'comentario': comentario})
