@@ -19,17 +19,17 @@ class RegistrarUsuario(CreateView):
     
     def form_valid(self, form):
         response = super().form_valid(form)
-        data = {'success': True, 'message': 'Registro exitoso. Por favor, inicia sesión.'}
+        data = {'success': True, 'message': ''}
         return JsonResponse(data)
 
     def form_invalid(self, form):
-        data = {'success': False, 'message': 'Error al registrar. Por favor, corrija los errores e intente nuevamente.'}
+        data = {'success': False, 'message': ''}
         return JsonResponse(data)
 class LoginUsuario(LoginView):
     template_name = 'registration/login.html'
 
     def form_valid(self, form):
-        messages.success(self.request, 'Login exitoso')
+        messages.success(self.request, '')
         return super().form_valid(form)
         
 
@@ -43,12 +43,12 @@ class LogoutUsuario(LogoutView):
             logout(request)
             response_data = {
                 'success': True,
-                'message': 'Logout exitoso. ¡Hasta luego!'
+                'message': ''
             }
         except Exception as e:
             response_data = {
                 'success': False,
-                'message': 'Error al hacer logout. Por favor, inténtelo nuevamente.'
+                'message': ''
             }
         return JsonResponse(response_data)
     
