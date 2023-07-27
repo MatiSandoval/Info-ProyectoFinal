@@ -6,37 +6,39 @@ from apps.comentario.forms import ComentarioForm
 from apps.comentario.models import Comentario
 from .models import Articulo, Categoria
 
-
-
 class ArticuloView(View):
     template_name = 'articulos/articulo.html'
 
-    def get(self, request, categorias=None, orden=None, fecha=None):
+    def get(self, request, categorias=None, categoria_id=None, orden=None, fecha=None):
         orden = request.GET.get('orden')
         fecha = request.GET.get('fecha')
+        categoria_id = request.GET.get('categoria')
+        
         print('fecha:', fecha)
 
-        if categorias:
-            articulos = Articulo.objects.filter(categoria = categorias)
-        else:
-            articulos = Articulo.objects.all()
+        # Obtenemos todos los artículos y los ordenamos según el criterio seleccionado
+        articulos = Articulo.objects.all()
 
         if orden == 'ascendente':
             articulos = articulos.order_by('titulo')
-        
         elif orden == 'descendente':
             articulos = articulos.order_by('-titulo')
 
         if fecha == 'ascendente':
             articulos = articulos.order_by('fecha_publicacion')
-        
         elif fecha == 'descendente':
             articulos = articulos.order_by('-fecha_publicacion')
 
+        # Si se proporciona el parámetro 'categorias', filtramos los artículos por la categoría seleccionada
+        if categorias is not None and categorias.isdigit() and categorias != '0':
+            
+            categorias = int(categorias)  # Convertimos 'categorias' a un número entero
+            articulos = articulos.filter(categoria=categorias)
+
+        # Obtenemos todas las categorías para mostrarlas en el filtro
         categorias = Categoria.objects.all()
 
-        return render(request, 'articulos/articulo.html', {'articulos' : articulos, 'categorias' : categorias})
-
+        return render(request, 'articulos/articulo.html', {'articulos': articulos, 'categorias': categorias,'categoria_id': categoria_id})
 
 
 def existe_articulo(id):
