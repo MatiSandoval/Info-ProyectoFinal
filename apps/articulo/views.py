@@ -5,7 +5,47 @@ from .forms import ArticuloForm
 from apps.comentario.forms import ComentarioForm
 from apps.comentario.models import Comentario
 from .models import Articulo, Categoria
+from django.http import HttpResponse
+from io import BytesIO
+from xhtml2pdf import pisa
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from django.template.loader import get_template
 
+# class ArticuloView(View):
+#     template_name = 'articulos/articulo.html'
+
+#     def get(self, request, categorias=None, categoria_id=None, orden=None, fecha=None):
+#         orden = request.GET.get('orden')
+#         fecha = request.GET.get('fecha')
+#         categoria_id = request.GET.get('categoria')
+        
+#         print('fecha:', fecha)
+
+#         # Obtenemos todos los artículos y los ordenamos según el criterio seleccionado
+#         articulos = Articulo.objects.all()
+
+#         if orden == 'ascendente':
+#             articulos = articulos.order_by('titulo')
+#         elif orden == 'descendente':
+#             articulos = articulos.order_by('-titulo')
+
+#         if fecha == 'ascendente':
+#             articulos = articulos.order_by('fecha_publicacion')
+#         elif fecha == 'descendente':
+#             articulos = articulos.order_by('-fecha_publicacion')
+
+#         # Si se proporciona el parámetro 'categorias', filtramos los artículos por la categoría seleccionada
+#         if categorias is not None and categorias.isdigit() and categorias != '0':
+            
+#             categorias = int(categorias)  # Convertimos 'categorias' a un número entero
+#             articulos = articulos.filter(categoria=categorias)
+
+#         # Obtenemos todas las categorías para mostrarlas en el filtro
+#         categorias = Categoria.objects.all()
+        
+
+#         return render(request, 'articulos/articulo.html', {'articulos': articulos, 'categorias': categorias,'categoria_id': categoria_id})
 class ArticuloView(View):
     template_name = 'articulos/articulo.html'
 
@@ -31,15 +71,24 @@ class ArticuloView(View):
 
         # Si se proporciona el parámetro 'categorias', filtramos los artículos por la categoría seleccionada
         if categorias is not None and categorias.isdigit() and categorias != '0':
-            
             categorias = int(categorias)  # Convertimos 'categorias' a un número entero
             articulos = articulos.filter(categoria=categorias)
 
         # Obtenemos todas las categorías para mostrarlas en el filtro
         categorias = Categoria.objects.all()
 
-        return render(request, 'articulos/articulo.html', {'articulos': articulos, 'categorias': categorias,'categoria_id': categoria_id})
+        # Renderizamos la plantilla HTML si no se solicita la descarga del PDF
+        if not categoria_id:
+            return render(request, 'articulos/articulo.html', {'articulos': articulos, 'categorias': categorias, 'categoria_id': categoria_id})
 
+        # Supongamos que se generó el archivo PDF en 'articulos.pdf'
+        pdf_file_path = 'articulos.pdf'
+
+        # Abre el archivo PDF y devuelve su contenido como una respuesta
+        with open(pdf_file_path, 'rb') as pdf_file:
+            response = HttpResponse(pdf_file.read(), content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="articulo_{categoria_id}.pdf"'
+            return response
 
 def existe_articulo(id):
     for i in Articulo:
@@ -112,4 +161,26 @@ def modificar(request,id):
         return redirect('apps.articulo:articulos')
     
     return render(request, 'articulos/modificar.html', {'formulario':formulario})
+
+
+def descargar_pdf(request, articulo_id):
+    # Obtener el artículo específico
+    articulo = get_object_or_404(Articulo, id=articulo_id)
+
+    # Obtener el contenido del template del PDF
+    template = get_template('articulos/articulo_pdf.html')
+    context = {'articulos': articulo}
+    html = template.render(context)
+
+    # Crear el archivo PDF
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
+
+    # Verificar si se generó correctamente el PDF
+    if not pdf.err:
+        response = HttpResponse(result.getvalue(), content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="{articulo.titulo}.pdf"'
+        return response
+
+    return HttpResponse("Error al generar el PDF", status=500)
 
