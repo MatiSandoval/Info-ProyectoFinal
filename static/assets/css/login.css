@@ -168,6 +168,21 @@ input[type="submit"]:hover {
   text-decoration: underline;
 }
 
+.logo {
+  position: absolute;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
+}
 
+img {
+  width: 25rem;
+  border: 0;
+  outline: none;
+  box-shadow: none;
 
+}
