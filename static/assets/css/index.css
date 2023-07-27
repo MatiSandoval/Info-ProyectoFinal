@@ -1,104 +1,117 @@
-body{
+body {
   font-size: 16px;
   font-family: 'Raleway', sans-serif;
   background-color: rgb(39, 181, 91);
 }
-html{
+
+html {
   overflow-x: hidden;
 }
 
-.home{
+.home {
   display: flex;
   flex-wrap: wrap;
-}  
+}
 
-button{
-  margin:20px;
+button {
+  margin: 20px;
 }
 
 
-nav ul li{
+nav ul li {
   padding: 10px;
-  }
+}
 
-section{
+section {
   background-color: rgb(39, 181, 91);
 }
-.heading{
+
+.heading {
   text-align: center;
   background: #04471C;
-  color:transparent;
+  color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  font-size:3.5rem;
+  font-size: 3.5rem;
   text-transform: uppercase;
-  padding:1rem;
+  padding: 1rem;
 }
 
 
 
 
-.btn:hover{
+.btn:hover {
   transform: scale(1.5);
 }
+
 .container-fluid a {
-  color:white;
+  color: white;
 }
+
 .detalles .caja-contenedor {
-  
+
   background-color: rgba(149, 255, 116, 0.726);
   margin-top: 5rem;
   text-align: center;
   transition: .2s linear;
   width: auto;
   height: auto;
- 
+
 }
-#destacadas{
-  color:black;
+
+#destacadas {
+  color: black;
 }
-.detalles .carousel{
+
+.detalles .carousel {
   align-items: center;
   padding-top: 0rem;
-  
+
 }
+
 .detalles .caja-contenedor #carouselExampleDark .carousel-item img {
   /* Establecer el tamaño deseado */
-  width: 30rem; /* Puedes usar valores en píxeles, porcentajes o cualquier otra unidad CSS */
+  width: 30rem;
+  /* Puedes usar valores en píxeles, porcentajes o cualquier otra unidad CSS */
   height: 50rem;
   /* Centrar horizontalmente las imágenes */
   margin-left: 0px;
   margin-right: auto;
 }
-.detalles .caja-contenedor #carouselExampleDark .carousel-item h5{
-  color:whitesmoke;
+
+.detalles .caja-contenedor #carouselExampleDark .carousel-item h5 {
+  color: whitesmoke;
 }
-.detalles .caja-contenedor #carouselExampleDark .carousel-item p{
-  color:whitesmoke;
+
+.detalles .caja-contenedor #carouselExampleDark .carousel-item p {
+  color: whitesmoke;
 }
-.detalles .caja-contenedor h1{
-  color:rgb(255, 255, 255);
-  
+
+.detalles .caja-contenedor h1 {
+  color: rgb(255, 255, 255);
+
 }
-.detalles .caja-contenedor h5{
+
+.detalles .caja-contenedor h5 {
   font-size: 2rem;
   color: #333;
   padding-top: 1rem;
   margin-top: 10rem;
 }
-.footer{
+
+.footer {
   padding-top: 3rem;
-  background-color: #04471C; 
-  color:whitesmoke;
+  background-color: #04471C;
+  color: whitesmoke;
   background-size: cover;
   background-position: center;
   padding-bottom: 3rem;
 }
 
-.footer .caja-contenedor{
-  display:flex;
+.footer .caja-contenedor {
+  display: flex;
   flex-wrap: wrap;
-   background-color: #04471C; 
+  background-color: #04471C;
 }
 
 .footer .caja-contenedor .caja {
@@ -107,36 +120,39 @@ section{
   align-items: center;
 }
 
-.footer .caja-contenedor .caja h3{
+.footer .caja-contenedor .caja h3 {
   font-size: 2.5rem;
   padding: 1rem 0;
   text-decoration: underline;
   text-underline-offset: 1rem;
 }
 
-.footer .caja-contenedor .caja .busca h3{
+.footer .caja-contenedor .caja .busca h3 {
   font-size: 3rem;
 }
-.footer .caja-contenedor .caja .busca h4{
+
+.footer .caja-contenedor .caja .busca h4 {
   font-size: 2.5rem;
   padding: 1rem 0;
   text-decoration: underline;
   text-underline-offset: 1rem;
 }
-.footer .caja-contenedor .caja .busca .colaboradores{
+
+.footer .caja-contenedor .caja .busca .colaboradores {
   text-align: center;
   padding-left: 30px;
   display: flex;
   align-items: center;
 }
-.footer .caja-contenedor .caja p{
+
+.footer .caja-contenedor .caja p {
   font-size: 1.5rem;
   padding: .5rem 0;
   color: rgb(255, 255, 255);
   text-align: justify;
 }
 
-.footer .caja-contenedor .caja .busca a{
+.footer .caja-contenedor .caja .busca a {
   display: block;
   font-size: 2.5rem;
   padding: .5rem 0;
@@ -144,76 +160,86 @@ section{
   text-decoration: none;
 }
 
-.footer .caja-contenedor .caja .busca a:hover{
+.footer .caja-contenedor .caja .busca a:hover {
   text-decoration: underline;
 }
 
 .footer .caja-contenedor .caja .info {
   display: flex;
   align-items: center;
- 
+
 }
 
-.footer .caja-contenedor .caja .info .icono{
+.footer .caja-contenedor .caja .info .icono {
   margin: .5rem 0;
   margin-right: 2rem;
   font-size: 1.8rem;
-  background:whitesmoke;
-  color:rgb(41, 98, 255);
+  background: whitesmoke;
+  color: rgb(41, 98, 255);
   height: 4.5rem;
   width: 4.5rem;
   line-height: 4.5rem;
   text-align: center;
-  border-radius:50%;
-  
+  border-radius: 50%;
+
 }
-.footer .caja-contenedor .caja img{
+
+.footer .caja-contenedor .caja img {
   width: 200px;
   margin-left: 6rem;
   align-items: center;
 }
+
 .footer .creditos {
   font-size: 2rem;
   font-weight: normal;
   letter-spacing: .1rem;
-  color:ghostwhite;
-  
+  color: ghostwhite;
+
   border-top: .1rem solid ghostwhite;
   padding: 2.5rem 1rem;
   text-align: center;
-  
+
 }
 
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
 }
 
-.detalles{
+.detalles {
   width: 100%;
 }
+
 .detalles .cajaa {
   width: 100%;
 }
-#catego{
+
+#catego {
   background-color: rgb(39, 181, 91);
 }
+
 .detalles .caja-contenedor .row .categor a img {
   width: 30rem;
-  height:20rem;
+  height: 20rem;
 }
+
 .detalles .caja-contenedor .row .categor #imagen4 {
   margin-left: 10rem;
 }
+
 .detalles .caja-contenedor .row .categor #imagen5 {
   margin-left: 15rem;
 }
+
 .detalles .caja-contenedor .row .categor #imagen1:hover {
   width: 50rem;
   height: 30rem;
   filter: brightness(70%);
 }
+
 .detalles .caja-contenedor .row .categor #imagen2:hover {
   width: 50rem;
   height: 30rem;
@@ -225,11 +251,13 @@ body, html {
   height: 30rem;
   filter: brightness(70%);
 }
+
 .detalles .caja-contenedor .row .categor #imagen4:hover {
   width: 50rem;
   height: 30rem;
   filter: brightness(70%);
 }
+
 .detalles .caja-contenedor .row .categor #imagen5:hover {
   width: 50rem;
   height: 30rem;
@@ -239,8 +267,38 @@ body, html {
 
 .detalles #catego p {
   text-align: justify;
-  
+
 }
-.detalles #catego{
+
+.detalles #catego {
   color: whitesmoke;
+}
+
+.user-image {
+  border-radius: 5rem;
+  margin-right: 1rem;
+
+  /* Esto agrega bordes redondeados para dar un aspecto de círculo */
+  border: 2px solid #fff;
+  /* Esto agrega un borde blanco alrededor de la imagen */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /* Esto agrega una sombra suave a la imagen */
+  /* Agrega cualquier otro estilo que desees para personalizar la imagen del usuario */
+}
+
+#usuario {
+  color: white;
+  text-transform: uppercase;
+  margin-right: 3rem;
+
+}
+
+.custom-navbar {
+  background-color: #04471C;
+}
+
+.custom-navbar .navbar-nav .nav-link {
+  color: #ebeaea;
+  /* Color blanco (puede cambiar el valor hexadecimal) */
+  /* Otros estilos personalizados que desee aplicar a los enlaces de navegación */
 }
