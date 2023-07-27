@@ -158,6 +158,8 @@
                                             {% if user.is_superuser %}
                                             <a class="btn btn-success btn-lg"
                                                 href="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">Eliminar comentario</a>
+                                            <a class="btn btn-success btn-lg"
+                                                href="{% url 'apps.comentario:editar_comentario' comentario_id=comentario.pk %}">Editar comentario</a>
 
                                             {% endif %}
                                         </div>
