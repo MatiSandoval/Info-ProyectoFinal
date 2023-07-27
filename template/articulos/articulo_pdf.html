@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ articulo.titulo }}</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        img {
+            align-items: center;
+            
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>{{ articulos.titulo }}</h1>
+    <br><br>
+    <img src="http://localhost:8000/{{ articulos.imagen.url }}" alt="Imagen del artículo" width="800px">
+    <br><br>
+    <h2>{{ articulos.resumen }}</h2>
+    <h4>Fecha de publicación: {{ articulos.fecha_publicacion }}</h4>
+    <br>
+    <h2>Contenido: </h2>
+    <p>{{ articulos.contenido }}</p>
+</body>
+
+</html>
