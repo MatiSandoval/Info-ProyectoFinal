@@ -12,13 +12,13 @@ class RegistroUsusarioForm(UserCreationForm):
     
 
     class LoginForm(forms.Form):
-        username = forms.CharField(label='Nombre de usuario')
-        password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+        username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre de usuario'}))
+        password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
         
         def login(self, request):
             username = self.cleaned_data.get('username')
             password = self.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
-            if user :
-                login (request, user)
+            if user:
+                login(request, user)
     

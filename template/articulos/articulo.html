@@ -63,7 +63,9 @@
             </a>
             {% for group in user.groups.all %}
             {% if group.name == 'Colaborador'%}
-            <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:articulo_crear' %}" id="agregararticulo">Agregar Articulo</a>
+            <div class="col-8">
+              <a class="btn btn-success btn-lg agregararti" href="{% url 'apps.articulo:articulo_crear' %}" id="agregararticulo">Agregar Articulo</a>
+            </div>
             {% endif %}
             {% endfor %}
           </div>
@@ -128,22 +130,28 @@
         var cate="";
       </script>
       {% for articulo in articulos %}
-      {% if forloop.first %}
-      {% comment %} Guardar la categoría del primer artículo en una variable de JavaScript {% endcomment %}
-      <script>
-        var primerArticuloCategoria = "{{ articulo.categoria }}";
-      </script>
-      {% endif %}
+        {% if forloop.first %}
+          <script>
+            var primerArticuloCategoria = "{{ articulo.categoria }}";
+            var tieneDistintasCategorias = false;
+          </script>
+        {% else %}
+          {% if articulo.categoria != articulos.0.categoria %}
+            <script>
+              tieneDistintasCategorias = true;
+            </script>
+          {% endif %}
+        {% endif %}
       <div class="col-4 col-md-4 p-5 mt-3 articulo-contenedor">
         <h4 class="text-center mt-3 mb-3" id="titulo"> {{ articulo.titulo | capfirst }} </h4>
         <a href="#"><img src=" {{ articulo.imagen.url }}" class=" img-fluid border" id="imagen-articulo"></a>
         <h5 class="mb-3 resumen">{{ articulo.resumen | slice:":600" }}</h5>
         <h5 class="mb-3 fecha">Publicado: {{ articulo.fecha_publicacion | slice:":19" }}</h5>
         {% if forloop.first %}
-        <p id="miParrafo">{{articulo.categoria}}</p>
+          <p id="miParrafo">{{articulo.categoria}}</p>
         
         {% elif not forloop.first and articulo.categoria != articulos.0.categoria %}
-        <p id="miParrafo2">Todos</p>
+          <p id="miParrafo2">Todos</p>
         
         {% else %}
           <p id="miParrafo2">{{articulo.categoria}}</p>
@@ -161,8 +169,8 @@
       
       <script>
         const contenidoParrafo = document.getElementById("miParrafo2").innerText;
-        
-        function preselectCategoria() {
+
+          function preselectCategoria() {
             const selectElement = document.getElementById("categoriasel");
 
             for (let i = 0; i < selectElement.options.length; i++) {
@@ -172,11 +180,14 @@
               }
             }
           }
-          if (contenidoParrafo=="Todos"){}
-          else{ preselectCategoria(); }
-          
-          
-        
+
+          if (tieneDistintasCategorias) {
+            // Si hay artículos con distintas categorías, establecer "Todos" como opción seleccionada
+            document.getElementById("categoriasel").value = "0";
+          } else {
+            // Si todos los artículos tienen la misma categoría, hacer el preselect según el primer artículo
+            preselectCategoria();
+          }
       </script>
      
     </div>
