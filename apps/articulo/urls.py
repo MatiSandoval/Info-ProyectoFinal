@@ -16,5 +16,6 @@ urlpatterns = [
     path('articulo_crear/', views.articulo_crear, name='articulo_crear'),
     path('acerca_de/', views.acerca_de, name='acerca_de'),
     path('articulos/<int:articulo_id>/descargar/', descargar_pdf, name='descargar_pdf'),
+    path('calificar/<int:articulo_id>/', views.calificar_articulo, name='calificar_articulo'),
 ]
  
