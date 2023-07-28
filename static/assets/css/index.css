@@ -302,9 +302,14 @@ html {
   /* Color blanco (puede cambiar el valor hexadecimal) */
   /* Otros estilos personalizados que desee aplicar a los enlaces de navegación */
 }
+
 .video h1 {
 
   text-align: center;
+}
+
+.custom-left {
+  margin-right: 3rem;
 }
 
 .video iframe {
