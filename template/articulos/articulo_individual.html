@@ -38,8 +38,55 @@
 
                         <h6>Contenido:</h6>
                         <p>{{ articulos.contenido | slice:":1200" }}</p>
-
-
+                        
+                        <!-- Contenido del artículo -->
+                        <h1>{{ articulo.titulo }}</h1>
+                        <p>{{ articulo.contenido }}</p>
+                        
+                        <!-- Mostrar la calificación promedio del artículo -->
+                        
+                        <h3>Calificación promedio: <strong>{{ articulos.calificacion_promedio }}</strong></h3>
+                        
+                        
+                        
+                        
+                        {% if user.is_authenticated %}
+                        
+                        <div class="justify-content-center">
+                        <form action="{% url 'apps.articulo:calificar_articulo' articulos.id %}" method="post" id="calif">
+                            {% csrf_token %}
+                            <input type="hidden" name="articulo_id" value="{{ articulos.id }}">
+                            <div class="col-4 clasificacion">
+                                <input id="radio1" type="radio" name="valor" value="5">
+                                <label for="radio1" class="estrellas">★</label>
+                                <input id="radio2" type="radio" name="valor" value="4">
+                                <label for="radio2" class="estrellas">★</label>
+                                <input id="radio3" type="radio" name="valor" value="3">
+                                <label for="radio3" class="estrellas">★</label>
+                                <input id="radio4" type="radio" name="valor" value="2">
+                                <label for="radio4" class="estrellas">★</label>
+                                <input id="radio5" type="radio" name="valor" value="1">
+                                <label for="radio5" class="estrellas">★</label>
+                            </div>
+                        </form>
+                        
+                        {% endif %}
+                        
+                        <button id="ver-puntuaciones" class="btn btn-success">Ver Puntuaciones</button>
+                        </div>
+                        <div id="puntuaciones" style="display: none;">
+                            {% if articulos.calificacion.all %}
+                            <ul style="display: inline;">
+                                {% for calificacion in articulos.calificacion.all %}
+                                <li style="display: inline;" class="califi"> {{ calificacion.usuario.username }}: ( {{ calificacion.valor }} )
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <p>No hay calificaciones para este artículo.</p>
+                            {% endif %}
+                        </div>
+                        
                         <div class="row pb-3">
                             {% if user.is_authenticated %}
 
@@ -157,6 +204,7 @@
     </div>
 
     </div>
+    <script src="{% static 'assets/js/articulos.js' %}"> </script>
 </section>
 <!-- End Article -->
 
