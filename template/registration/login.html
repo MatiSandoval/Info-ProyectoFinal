@@ -26,15 +26,16 @@
         <form method="post" id="loginForm">
             {% csrf_token %}
             <div class="username">
-                <label for="{{ form.username.id_for_label }}">Nombre de Usuario:</label>
+                <h5>Nombre de Usuario: </h5>
                 {{ form.username }}
             </div>
             <div class="contrasena">
-                <label for="{{ form.password.id_for_label }}">Contraseña:</label>
+                <h5>Contraseña:</h5>
                 {{ form.password }}
             </div>
-            <!-- <div class="recordar">¿Olvidó su contraseña?</div> -->
-            <input type="submit" value="Iniciar Sesión">
+            
+            <a class="recordar" href="{% url 'apps.usuario:password_reset' %}" id="olvido">¿Olvidó su contraseña?</a>
+            <input type="submit" value="Iniciar Sesión" id="iniciar">
             <div class="registrarse">
                 <a href="{% url 'apps.usuario:registrar' %}?next={{ request.GET.next }}">¿Nuevo en A.I.R.E.?
                     Regístrate</a>
@@ -72,8 +73,9 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.min.js"></script>
-
+    
     <link rel="stylesheet" href="sweetalert2.min.css">
+    
 </body>
 {% endblock contenido %}
 
