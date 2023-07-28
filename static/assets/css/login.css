@@ -8,7 +8,7 @@ body {
 
 .formulario {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
@@ -124,15 +124,19 @@ form .contrasena {
 .contrasena input:focus~span::before {
   width: 100%;
 }
-
-.recordar {
-  margin: -5px 0 20px 5px;
-  color: blue;
-  cursor: pointer;
+#iniciar{
+  margin-top:1rem;
 }
 
-.recordar:hover {
+#olvido{
+  color: rgb(128, 128, 133);
+    cursor: pointer;
+    margin-left: 13rem;
+    text-decoration: none;
+}
+#olvido:hover {
   text-decoration: underline;
+  color:rgb(58, 191, 232);
 }
 
 input[type="submit"] {
@@ -166,6 +170,7 @@ input[type="submit"]:hover {
 
 .registrarse a:hover {
   text-decoration: underline;
+  color: rgb(58, 191, 232);
 }
 
 .logo {
@@ -173,7 +178,7 @@ input[type="submit"]:hover {
   border: 0;
   outline: none;
   box-shadow: none;
-  top: 16%;
+  top: 21%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -186,3 +191,4 @@ img {
   box-shadow: none;
 
 }
+
