@@ -84,12 +84,15 @@
     margin-top: 20px;
     
 }
-#agregararticulo{
-    margin-left: 12rem;
-    width: auto;
-    height: auto;
+/* #agregararticuloo{
+    margin-top: 7rem;
+    
+} */
+.agregararti{
+    
+    margin-bottom: -3rem;
+    margin-top: 1.5rem;
 }
-
 #miParrafo {
     display: none;
 }
