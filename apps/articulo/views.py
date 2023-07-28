@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Articulo
 from django.views import View
 from .forms import ArticuloForm
@@ -152,6 +152,38 @@ def descargar_pdf(request, articulo_id):
         return response
 
     return HttpResponse("Error al generar el PDF", status=500)
+# @login_required
+# def calificar_articulo(request, articulo_id):
+#     articulo = get_object_or_404(Articulo, id=articulo_id)
+
+#     if request.method == 'POST':
+#         valor = request.POST.get('valor')
+#         # Asegúrate de validar que 'valor' tenga un valor válido antes de guardar la calificación
+#         if valor is not None and valor.isdigit():
+#             valor = int(valor)
+
+#             # Crear una instancia de Calificacion y guardarla en la base de datos
+#             calificacion, created = Calificacion.objects.get_or_create(
+#                 articulo=articulo,
+#                 usuario=request.user,
+#                 defaults={'valor': valor}
+#             )
+
+#             # Si la calificación ya existía, actualizamos el valor
+#             if not created:
+#                 calificacion.valor = valor
+#                 calificacion.save()
+
+#             # Recalculamos la calificación promedio del artículo
+#             calificacion_promedio = Calificacion.objects.filter(articulo=articulo).aggregate(Avg('valor'))['valor__avg']
+#             if calificacion_promedio is not None:
+#                 articulo.calificacion_promedio = round(calificacion_promedio, 2)
+#                 articulo.save()
+
+#             # Resto del código para manejar la calificación del artículo y redirigir a la página de detalles del artículo, por ejemplo
+#     return render(request, 'articulos/articulo_individual.html', {'articulos': articulo})
+    
+    
 @login_required
 def calificar_articulo(request, articulo_id):
     articulo = get_object_or_404(Articulo, id=articulo_id)
@@ -180,6 +212,7 @@ def calificar_articulo(request, articulo_id):
                 articulo.calificacion_promedio = round(calificacion_promedio, 2)
                 articulo.save()
 
-            # Resto del código para manejar la calificación del artículo y redirigir a la página de detalles del artículo, por ejemplo
+            # Redirigir al usuario a la página de detalles del artículo
+            return redirect(reverse('apps.articulo:leer_articulo', kwargs={'id': articulo_id}))
+
     return render(request, 'articulos/articulo_individual.html', {'articulos': articulo})
-    
