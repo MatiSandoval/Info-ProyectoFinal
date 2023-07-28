@@ -63,7 +63,9 @@
             </a>
             {% for group in user.groups.all %}
             {% if group.name == 'Colaborador'%}
-            <a class="btn btn-success btn-lg" href="{% url 'apps.articulo:articulo_crear' %}" id="agregararticulo">Agregar Articulo</a>
+            <div class="col-8">
+              <a class="btn btn-success btn-lg agregararti" href="{% url 'apps.articulo:articulo_crear' %}" id="agregararticulo">Agregar Articulo</a>
+            </div>
             {% endif %}
             {% endfor %}
           </div>
