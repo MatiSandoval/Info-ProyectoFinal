@@ -10,42 +10,11 @@ from io import BytesIO
 from xhtml2pdf import pisa
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
+from .models import Calificacion
+from django.db.models import Avg
 
-# class ArticuloView(View):
-#     template_name = 'articulos/articulo.html'
-
-#     def get(self, request, categorias=None, categoria_id=None, orden=None, fecha=None):
-#         orden = request.GET.get('orden')
-#         fecha = request.GET.get('fecha')
-#         categoria_id = request.GET.get('categoria')
-        
-#         print('fecha:', fecha)
-
-#         # Obtenemos todos los artículos y los ordenamos según el criterio seleccionado
-#         articulos = Articulo.objects.all()
-
-#         if orden == 'ascendente':
-#             articulos = articulos.order_by('titulo')
-#         elif orden == 'descendente':
-#             articulos = articulos.order_by('-titulo')
-
-#         if fecha == 'ascendente':
-#             articulos = articulos.order_by('fecha_publicacion')
-#         elif fecha == 'descendente':
-#             articulos = articulos.order_by('-fecha_publicacion')
-
-#         # Si se proporciona el parámetro 'categorias', filtramos los artículos por la categoría seleccionada
-#         if categorias is not None and categorias.isdigit() and categorias != '0':
-            
-#             categorias = int(categorias)  # Convertimos 'categorias' a un número entero
-#             articulos = articulos.filter(categoria=categorias)
-
-#         # Obtenemos todas las categorías para mostrarlas en el filtro
-#         categorias = Categoria.objects.all()
-        
-
-#         return render(request, 'articulos/articulo.html', {'articulos': articulos, 'categorias': categorias,'categoria_id': categoria_id})
 class ArticuloView(View):
     template_name = 'articulos/articulo.html'
 
@@ -183,4 +152,34 @@ def descargar_pdf(request, articulo_id):
         return response
 
     return HttpResponse("Error al generar el PDF", status=500)
+@login_required
+def calificar_articulo(request, articulo_id):
+    articulo = get_object_or_404(Articulo, id=articulo_id)
 
+    if request.method == 'POST':
+        valor = request.POST.get('valor')
+        # Asegúrate de validar que 'valor' tenga un valor válido antes de guardar la calificación
+        if valor is not None and valor.isdigit():
+            valor = int(valor)
+
+            # Crear una instancia de Calificacion y guardarla en la base de datos
+            calificacion, created = Calificacion.objects.get_or_create(
+                articulo=articulo,
+                usuario=request.user,
+                defaults={'valor': valor}
+            )
+
+            # Si la calificación ya existía, actualizamos el valor
+            if not created:
+                calificacion.valor = valor
+                calificacion.save()
+
+            # Recalculamos la calificación promedio del artículo
+            calificacion_promedio = Calificacion.objects.filter(articulo=articulo).aggregate(Avg('valor'))['valor__avg']
+            if calificacion_promedio is not None:
+                articulo.calificacion_promedio = round(calificacion_promedio, 2)
+                articulo.save()
+
+            # Resto del código para manejar la calificación del artículo y redirigir a la página de detalles del artículo, por ejemplo
+    return render(request, 'articulos/articulo_individual.html', {'articulos': articulo})
+    
