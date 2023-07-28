@@ -99,3 +99,84 @@
 #miParrafo2{
         display: none;
     }
+#calif {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#calif p {
+    text-align: center;
+}
+
+#calif .estrellas {
+    font-size: 50px;
+    margin-top: -1.5rem;
+    margin-left: 3rem;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.estrellas {
+    color: grey;
+    
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    
+}
+
+.estrellas:hover,
+.estrellas:hover~label {
+    color: orange;
+}
+
+input[type="radio"]:checked~.estrellas {
+    color: orange;
+}
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+.clasificacion>input {
+    display: none;
+}
+
+.clasificacion>label {
+    font-size: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.clasificacion>input:checked~label {
+    color: orange;
+    /* Cambia el color de las estrellas seleccionadas */
+}
+#calif .col-4 {
+    display: flex;
+    justify-content: center;
+    /* Centra el botón horizontalmente */
+    margin-top: 10px;
+    /* Agrega un espacio entre las estrellas y el botón */
+}
+#puntuaciones ul li {
+    display: inline;
+    
+}
+#ver-puntuaciones{
+    margin-left: 15rem;
+}
+#puntuaciones ul li.califi {
+    background-color: rgb(30, 81, 50);
+    color: rgb(233, 244, 222);
+    border-radius: 2rem;
+    margin-right: 1rem;
+    font-size: 1.4rem;
+    
+    /* Aumentar el tamaño de fuente a 1.2 rem (puedes ajustar el valor según tus necesidades) */
+}
