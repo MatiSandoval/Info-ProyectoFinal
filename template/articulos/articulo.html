@@ -145,20 +145,20 @@
       <div class="col-lg-6 mb-4">
         <a href="{% url 'apps.articulo:leer_articulo' articulo.id %}" style="text-decoration: none;">
           <div class="p-5 mt-3 articulo-contenedor" data-url="{% url 'apps.articulo:leer_articulo' articulo.id %}">
-            <h4 class="text-center mt-3 mb-3 titulo">{{ articulo.titulo | capfirst }}</h4>
+            <h1 class="text-center mt-3 mb-3 titulo">{{ articulo.titulo | capfirst }}</h1>
             <div class="col-12 d-flex justify-content-center">
               <img src="{{ articulo.imagen.url }}" class="img-fluid border" id="imagen-articulo">
             </div>
             <div class="text-center mt-3">
-              <h5 class="mb-3 resumen">{{ articulo.resumen | slice:":600" }}</h5>
-              <h5 class="mb-3 fecha">Publicado: {{ articulo.fecha_publicacion | slice:":19" }}</h5>
-              <h4 class="mb-3 fecha">Categoria: {{ articulo.categoria }}</h4>
+              <h5 class="mb-3 resumen">{{ articulo.resumen | capfirst }}</h5>
+              <h5 class="mb-3 fecha" style="text-align:end;">Publicado: {{ articulo.fecha_publicacion | slice:":19" }}hs</h5>
+              <h1 class="mb-3 fecha">Categoria: {{ articulo.categoria }}</h1>
               {% if forloop.first %}
-              <p class="miParrafo" style="display: none;">{{ articulo.categoria }}</p>
+              <p class="miParrafo" style="display: none;" id="miParrafo">{{ articulo.categoria }}</p>
               {% elif not forloop.first and articulo.categoria != articulos.0.categoria %}
-              <p class="miParrafo2" style="display: none;">Todos</p>
+              <p class="miParrafo2" style="display: none;" id="miParrafo2">Todos</p>
               {% else %}
-              <p class="miParrafo2" style="display: none;">{{ articulo.categoria }}</p>
+              <p class="miParrafo2" style="display: none;" id="miParrafo2">{{ articulo.categoria }}</p>
               {% endif %}
             </div>
           </div>
