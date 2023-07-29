@@ -37,7 +37,7 @@
                         </ul>
 
                         <h6>Contenido:</h6>
-                        <p>{{ articulos.contenido | slice:":1200" }}</p>
+                        <p>{{ articulos.contenido|safe | slice:":1200" }}</p>
                         
                         <!-- Contenido del artículo -->
                         <h1>{{ articulo.titulo }}</h1>
