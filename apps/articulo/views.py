@@ -127,10 +127,16 @@ def modificar(request,id):
     
     if formulario.is_valid() and request.POST:
         formulario.save()
-        return redirect('apps.articulo:articulos')
-    
+        return redirect('apps.articulo:articulos')    
     return render(request, 'articulos/modificar.html', {'formulario':formulario})
 
+def eliminar_articulo(request,articulo_id):
+    articulo = get_object_or_404(Articulo, pk=articulo_id)
+
+    if request.method == 'POST':
+        articulo.delete()
+        return redirect('apps.articulo:articulos')
+    return render(request, 'articulos/eliminar_articulo.html', {'articulo': articulo})
 
 def descargar_pdf(request, articulo_id):
     # Obtener el artículo específico
