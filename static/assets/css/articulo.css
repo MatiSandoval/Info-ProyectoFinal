@@ -1,104 +1,159 @@
-.articulo-contenedor {
-    background-color: rgb(39, 181, 91);
-    /* Cambia este color por el que desees */
-}
-
-
-.articulo-contenedor {
+/* .articulo-contenedor {
     display: flex;
-    align-items:self-start;
+    align-items: self-start;
     justify-content: center;
     flex-wrap: wrap;
-    
-    background-color: rgb(236, 236, 236);
+
+    background-color: rgb(197, 197, 197);
     border: .1rem solid rgba(17, 85, 34, 0.754);
     box-shadow: 0 .5rem 1rem rgba(16, 80, 24, 0.1);
-    margin: 1rem;
-    padding: 3rem 2rem;
-    margin-left: 2rem;
+    
+   
+    margin-right: 5rem;
     transition: .2s linear;
-    width: 35rem;
+    width: 40rem;
     height: 60rem;
     border-color: rgb(31, 69, 16);
     border-radius: 2rem;
-    border-width: 1rem;
-    
+    border-width: .6rem;
+
+} */
+
+
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
 }
-.articulo-contenedor .resumen{
+
+.articulo-contenedor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(197, 197, 197);
+    box-shadow: 0 0.5rem 1rem rgba(16, 80, 24, 0.1);
+    border: 0.6rem solid rgb(31, 69, 16);
+    border-radius: 2rem;
+    max-width: 50rem;
+    /* Tamaño máximo deseado para los artículos */
+    /* Hace el contenedor responsivo */
+    padding: 2rem;
+    /* Añade espacio interno */
+    margin: 1rem;
+    /* Margen exterior entre los contenedores */
+    transition: 0.2s linear;
+    word-wrap: break-word;
+}
+
+.articulo-contenedor .resumen {
     text-align: justify;
 }
-#imagen-articulo{
-    margin:auto;
-    width: auto;
-    height: 20rem;
+.articulo-contenedor:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
 }
-#titulo{
-    text-transform: uppercase;
+
+
+.articulo-contenedor.clicked {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
 }
-#public{
-    color:rgb(167, 161, 149);
-    font-family: 'Courier New', Courier, monospace;
-    text-align:right;
+
+.articulo-contenedor h4,
+.articulo-contenedor h5 {
+    color: black;
+    
+    font-weight: normal;
     
 }
-#contacto{
+
+#imagen-articulo {
+    margin: auto;
+    width: 40rem;
+    height: 30rem;
+}
+
+#titulo {
+    text-transform: uppercase;
+}
+
+#public {
+    color: rgb(167, 161, 149);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: right;
+
+}
+
+#contacto {
     text-transform: uppercase;
     margin-top: 3rem;
     margin-bottom: 3rem;
     align-items: center;
     text-align: center;
 }
-#btncontacto{
+
+#btncontacto {
     align-items: center;
     margin-left: 35rem;
     width: 7rem;
     height: 3rem;
     text-transform: uppercase;
 }
-.articulo-contenedor .fecha{
+
+.articulo-contenedor .fecha {
     color: rgb(110, 110, 107);
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    
+
 }
-#articulos-row{
+
+#articulos-row {
     margin-top: 3rem;
 }
+
 #filtro-botona {
     padding: 6px 8px 6px 8px;
-    
+
     margin-top: 2rem;
 }
+
 #filtro-botonc {
     padding: 6px 8px 6px 8px;
-    
+
     margin-top: 2rem;
 }
+
 #filtro-boton {
     padding: 6px 8px 6px 8px;
-    
+
     margin-top: 2rem;
 }
 
 .fila-botones {
     margin-top: 20px;
-    
+
 }
+
 /* #agregararticuloo{
     margin-top: 7rem;
     
 } */
-.agregararti{
-    
+.agregararti {
+
     margin-bottom: -3rem;
     margin-top: 1.5rem;
 }
+
 #miParrafo {
-    
+    display: none;
 }
-#miParrafo2{
-        
-    }
+
+#miParrafo2 {
+    display: none;
+}
+
 #calif {
     width: 250px;
     margin: 0 auto;
@@ -121,13 +176,13 @@ input[type="radio"] {
 
 .estrellas {
     color: grey;
-    
+
 }
 
 .clasificacion {
     direction: rtl;
     unicode-bidi: bidi-override;
-    
+
 }
 
 .estrellas:hover,
@@ -138,6 +193,7 @@ input[type="radio"] {
 input[type="radio"]:checked~.estrellas {
     color: orange;
 }
+
 .clasificacion {
     direction: rtl;
     unicode-bidi: bidi-override;
@@ -157,6 +213,7 @@ input[type="radio"]:checked~.estrellas {
     color: orange;
     /* Cambia el color de las estrellas seleccionadas */
 }
+
 #calif .col-4 {
     display: flex;
     justify-content: center;
@@ -164,19 +221,26 @@ input[type="radio"]:checked~.estrellas {
     margin-top: 10px;
     /* Agrega un espacio entre las estrellas y el botón */
 }
+
 #puntuaciones ul li {
     display: inline;
-    
+
 }
-#ver-puntuaciones{
+
+#ver-puntuaciones {
     margin-left: 15rem;
 }
+
 #puntuaciones ul li.califi {
     background-color: rgb(30, 81, 50);
     color: rgb(233, 244, 222);
     border-radius: 2rem;
     margin-right: 1rem;
     font-size: 1.4rem;
-    
+
     /* Aumentar el tamaño de fuente a 1.2 rem (puedes ajustar el valor según tus necesidades) */
+}
+
+#pdf {
+    width: 12rem;
 }

@@ -1,8 +1,8 @@
 from .models import Usuario
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import authenticate, login, get_user_model
+from django.forms.widgets import ClearableFileInput
 
 class RegistroUsusarioForm(UserCreationForm):
  
@@ -21,4 +21,11 @@ class RegistroUsusarioForm(UserCreationForm):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-    
+CustomUser = get_user_model()
+
+class CustomUserUpdateForm(forms.ModelForm):
+    imagen = forms.ImageField(required=False, widget=forms.FileInput)  # Eliminar el atributo "clearable" para evitar la opción de eliminar
+
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'first_name', 'last_name', 'email', 'imagen']
