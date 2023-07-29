@@ -32,7 +32,7 @@
                                 <h6>Resumen: </h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class=""><strong>{{ articulos.resumen | slice:":400" }}</strong></p>
+                                <p class=""><strong>{{ articulos.resumen | capfirst }}</strong></p>
                             </li>
                         </ul>
 
@@ -70,7 +70,34 @@
                                     <label for="radio5" class="estrellas">★</label>
                                 </div>
                             </form>
+                            {% if articulos.calificacion.all %}
+                            {% for calificacion in articulos.calificacion.all %}
+                            {% if calificacion.usuario.username == user.username %}
+                            {% with calificacion.valor as user_rating %}
+                            {% ifchanged %}
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const estrellas = document.querySelectorAll('.estrellas');
 
+                                    if ('{{ user_rating }}') {
+                                        const calificacion = parseInt('{{ user_rating }}');
+                                        const radio = document.getElementById(`radio${5 - calificacion + 1}`);
+
+                                        if (radio) {
+                                            radio.checked = true;
+                                            for (let i = 0; i < 5 - calificacion; i++) {
+                                                estrellas[i].classList.add('estrella-vacia');
+                                            }
+                                        }
+                                    }
+                                });
+                            </script>
+                            {% endifchanged %}
+                            {% endwith %}
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            
                             {% endif %}
 
                             <button id="ver-puntuaciones" class="btn btn-success">Ver Puntuaciones</button>
@@ -79,8 +106,7 @@
                             {% if articulos.calificacion.all %}
                             <ul style="display: inline;">
                                 {% for calificacion in articulos.calificacion.all %}
-                                <li style="display: inline;" class="califi"> {{ calificacion.usuario.username }}: ( {{calificacion.valor }} )
-                                </li>
+                                <li style="display: inline;" class="califi"> {{ calificacion.usuario.username }}: {{calificacion.valor }}</li>
                                 {% endfor %}
                             </ul>
                             {% else %}
