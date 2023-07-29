@@ -62,6 +62,7 @@
 }
 
 .articulo-contenedor h4,
+.articulo-contenedor h1,
 .articulo-contenedor h5 {
     color: black;
     
@@ -224,23 +225,25 @@ input[type="radio"]:checked~.estrellas {
 
 #puntuaciones ul li {
     display: inline;
-
 }
 
 #ver-puntuaciones {
     margin-left: 15rem;
+    margin-bottom: 3rem;
 }
 
 #puntuaciones ul li.califi {
     background-color: rgb(30, 81, 50);
     color: rgb(233, 244, 222);
-    border-radius: 2rem;
+    border-radius: 1rem;
     margin-right: 1rem;
-    font-size: 1.4rem;
-
+    font-size: 1.2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /* Aumentar el tamaño de fuente a 1.2 rem (puedes ajustar el valor según tus necesidades) */
 }
-
+.botoness{
+    margin-top: 3rem;
+}
 #pdf {
     width: 12rem;
 }
