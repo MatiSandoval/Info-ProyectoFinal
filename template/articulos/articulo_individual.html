@@ -103,8 +103,7 @@
                             </div>
 
                             <div class="col d-grid">
-                                <a class="btn btn-danger btn-lg" href="#eliminar">Eliminar</a>
-
+                                <a class="btn btn-danger btn-lg" href="{% url 'apps.articulo:eliminar_articulo' articulos.id %}">Eliminar</a>
                             </div>
                             {% endif %}
                             {% endfor %}
