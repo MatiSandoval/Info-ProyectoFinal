@@ -17,8 +17,10 @@
 {% block contenido %}
 
 <body>
-    <a href="{% url 'index' %}" class="logo"><img src="{% static '/assets/img/logo.png' %}" class="img-fluid border"
-            class="logo"></a>
+    <a href="{% url 'index' %}" class="logo">
+        <img src="{% static '/assets/img/logo.png' %}" class="img-fluid border"
+            class="logo">
+    </a>
     <div class="formulario">
 
         <h1>Inicio de Sesión</h1>
@@ -43,31 +45,32 @@
         </form>
         <script>
             var loginURL = '{% url "apps.usuario:login" %}';
-            function mensaje() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error al iniciar sesión',
-                    text: 'Parece que algo estuvo mal',
-                    footer: '',
-                })
-            }
-            function mensaje2() {
-                var x = "{% url 'index' %}";
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Has iniciado sesión correctamente!',
-                    text: '',
-                    showCancelButton: false,
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Ir a Inicio',
-                }).then((result) => {
-                    // El usuario hizo clic en el botón "Ir a Iniciar Sesión"
-                    if (result.isConfirmed) {
-                        // Redirige a la página de inicio de sesión
-                        window.location.href = x;
-                    }
-                });
-            }
+                function mensaje() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al iniciar sesión',
+                        text: 'Parece que algo estuvo mal',
+                        footer: '',
+                    })
+                }
+                function mensaje2() {
+                    var x = "{% url 'index' %}";
+                    var next_page = "{{ request.GET.next }}"; // Obtenemos la URL del parámetro 'next' en la URL
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Has iniciado sesión correctamente!',
+                        text: '',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Volver',
+                    }).then((result) => {
+                        // El usuario hizo clic en el botón "Ir a Iniciar Sesión"
+                        if (result.isConfirmed) {
+                            // Redirige a la página de inicio de sesión o la página de inicio (si no hay 'next')
+                            window.location.href = next_page || x;
+                        }
+                    });
+                }
         </script>
         <script src="{% static 'assets/js/sweetalert2.js' %}"></script>
     </div>
