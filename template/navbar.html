@@ -39,7 +39,7 @@
             {% endif %}
             {% endfor %}
             {% if user.imagen %}
-            <h3 id="usuario">Bienvenid@, {{ user.username }}!</h3>
+            <h3 id="usuario">Bienvenid@, {{ user.first_name|default:user.username }}!</h3>
             <div class="dropdown">
                 <a class="dropdown-toggle" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" data-bs-popper="none"
                     aria-haspopup="false" aria-expanded="false">
