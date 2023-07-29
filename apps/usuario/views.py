@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.urls import reverse_lazy
 from django.http import JsonResponse
-from django.contrib.auth import logout
+from django.contrib.auth import logout,login
 from apps.usuario.models import Usuario
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -14,22 +14,35 @@ from django.contrib.auth.models import Group
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.views import PasswordResetView
 from smtplib import SMTPAuthenticationError
-
+from .forms import CustomUserUpdateForm
+from django.views.decorators.csrf import csrf_exempt
 
 class RegistrarUsuario(CreateView):
     template_name = 'registration/registrar.html'
     form_class = RegistroUsusarioForm
-    
+
+    def get(self, request, *args, **kwargs):
+        # Obtener la URL de la página a la que se redirigirá después del registro
+        self.next_page = request.GET.get('next')
+        return super().get(request, *args, **kwargs)
+
     def form_valid(self, form):
         response = super().form_valid(form)
         miembro_group = Group.objects.get(name='Miembro')
         self.object.groups.add(miembro_group)
-        data = {'success': True, 'message': ''}
-        return JsonResponse(data)
+
+        # Autenticar al usuario recién registrado
+        login(self.request, self.object)
+
+        return response
 
     def form_invalid(self, form):
-        data = {'success': False, 'message': ''}
-        return JsonResponse(data)
+        return JsonResponse({'success': False, 'message': ''})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['next_page'] = self.next_page
+        return context
 class LoginUsuario(LoginView):
     template_name = 'registration/login.html'
 
@@ -115,3 +128,23 @@ class CustomPasswordResetView(PasswordResetView):
             # mostrar un mensaje de error en el formulario
             form.add_error(None, 'Ocurrió un error al enviar el correo. Por favor, inténtalo de nuevo más tarde.')
             return super().form_invalid(form)
+@login_required
+def user_update_view(request):
+    if request.method == 'POST':
+        form = CustomUserUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse({'status': 'error', 'errors': form.errors})
+    else:
+        form = CustomUserUpdateForm(instance=request.user)
+
+    return render(request, 'registration/modificar_usuario.html', {'form': form})
+@csrf_exempt
+def save_next_page(request):
+    if request.method == 'POST':
+        next_page = request.POST.get('next_page')
+        request.session['next_page'] = next_page
+        return JsonResponse({})
+    return JsonResponse({}, status=400)

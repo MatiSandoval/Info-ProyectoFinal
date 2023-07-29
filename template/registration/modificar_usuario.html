@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block titulo %} Modificar usuario {% endblock %}
+
+{% block contenido %}
+<section class="bg-light">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-lg-5 mt-5">
+                <div class="card mb-3">
+                    <img class="card-img img-fluid" src="{{ user.imagen.url }}" alt="Imagen de usuario" id="user-image">
+                </div>
+                <div class="row">
+
+                </div>
+            </div>
+
+            <div class="col-lg-7 mt-5">
+
+                <div class="card">
+                    <div class="card-header">
+                        Modificar información de usuario
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Datos del usuario</h4>
+                        <form method="post" enctype="multipart/form-data" id="update-form">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+
+                            <div class="d-flex justify-content-center">
+                                <input type="submit" class="btn btn-success" value="Confirmar" onclick="">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('#update-form');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Realizar la petición POST para actualizar el formulario mediante Fetch API
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            // Mostrar el SweetAlert con el mensaje de éxito
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Datos modificados!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                // Recargar la página después de cerrar el SweetAlert
+                                location.reload();
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        // Manejar errores aquí si es necesario
+                        console.error('Error al actualizar el formulario:', error);
+                    });
+            });
+        });
+</script>
+{% endblock %}

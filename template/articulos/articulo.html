@@ -124,7 +124,7 @@
         </div>
       </div>
     </div>
-    <div class="row" id="articulos-row">
+    <div class="row row-eq-height" id="articulos-row">
       <script>
         var mismaCategoria = true;
         var cate="";
@@ -142,27 +142,28 @@
             </script>
           {% endif %}
         {% endif %}
-      <div class="col-4 col-md-4 p-5 mt-3 articulo-contenedor">
-        <h4 class="text-center mt-3 mb-3" id="titulo"> {{ articulo.titulo | capfirst }} </h4>
-        <a href="#"><img src=" {{ articulo.imagen.url }}" class=" img-fluid border" id="imagen-articulo"></a>
-        <h5 class="mb-3 resumen">{{ articulo.resumen | slice:":600" }}</h5>
-        <h5 class="mb-3 fecha">Publicado: {{ articulo.fecha_publicacion | slice:":19" }}</h5>
-        {% if forloop.first %}
-          <p id="miParrafo">{{articulo.categoria}}</p>
-        
-        {% elif not forloop.first and articulo.categoria != articulos.0.categoria %}
-          <p id="miParrafo2">Todos</p>
-        
-        {% else %}
-          <p id="miParrafo2">{{articulo.categoria}}</p>
-          
-        {% endif %}
-        
-        <p class="text-center"><a class="btn btn-success"
-            href="{% url 'apps.articulo:leer_articulo' articulo.id %}">Leer mas</a></p>
-
+      <div class="col-lg-6 mb-4">
+        <a href="{% url 'apps.articulo:leer_articulo' articulo.id %}" style="text-decoration: none;">
+          <div class="p-5 mt-3 articulo-contenedor" data-url="{% url 'apps.articulo:leer_articulo' articulo.id %}">
+            <h4 class="text-center mt-3 mb-3 titulo">{{ articulo.titulo | capfirst }}</h4>
+            <div class="col-12 d-flex justify-content-center">
+              <img src="{{ articulo.imagen.url }}" class="img-fluid border" id="imagen-articulo">
+            </div>
+            <div class="text-center mt-3">
+              <h5 class="mb-3 resumen">{{ articulo.resumen | slice:":600" }}</h5>
+              <h5 class="mb-3 fecha">Publicado: {{ articulo.fecha_publicacion | slice:":19" }}</h5>
+              <h4 class="mb-3 fecha">Categoria: {{ articulo.categoria }}</h4>
+              {% if forloop.first %}
+              <p class="miParrafo" style="display: none;">{{ articulo.categoria }}</p>
+              {% elif not forloop.first and articulo.categoria != articulos.0.categoria %}
+              <p class="miParrafo2" style="display: none;">Todos</p>
+              {% else %}
+              <p class="miParrafo2" style="display: none;">{{ articulo.categoria }}</p>
+              {% endif %}
+            </div>
+          </div>
+        </a>
       </div>
-
       {% empty %}
       <li> No hay articulos </li>
       {% endfor %}

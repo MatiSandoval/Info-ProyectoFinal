@@ -1,8 +1,4 @@
-body {
-  font-size: 16px;
-  font-family: 'Raleway', sans-serif;
-  background-color: rgb(39, 181, 91);
-}
+
 
 html {
   overflow-x: hidden;
@@ -24,6 +20,7 @@ nav ul li {
 
 section {
   background-color: rgb(39, 181, 91);
+    font-family: 'Raleway', sans-serif;
 }
 
 .heading {
@@ -50,17 +47,22 @@ section {
 
 .detalles .caja-contenedor {
 
-  background-color: rgba(149, 255, 116, 0.726);
-  margin-top: 5rem;
+  
+  margin-top: .1rem;
   text-align: center;
   transition: .2s linear;
   width: auto;
   height: auto;
 
 }
+.caja-contenedor h1{
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  color:white;
+}
 
 #destacadas {
-  color: black;
+  background-color: rgb(82, 204, 126);
 }
 
 .detalles .carousel {
@@ -69,15 +71,7 @@ section {
 
 }
 
-.detalles .caja-contenedor #carouselExampleDark .carousel-item img {
-  /* Establecer el tamaño deseado */
-  width: 30rem;
-  /* Puedes usar valores en píxeles, porcentajes o cualquier otra unidad CSS */
-  height: 50rem;
-  /* Centrar horizontalmente las imágenes */
-  margin-left: 0px;
-  margin-right: auto;
-}
+
 
 .detalles .caja-contenedor #carouselExampleDark .carousel-item h5 {
   color: whitesmoke;
@@ -96,7 +90,7 @@ section {
   font-size: 2rem;
   color: #333;
   padding-top: 1rem;
-  margin-top: 10rem;
+  
 }
 
 .footer {
@@ -289,7 +283,7 @@ html {
 #usuario {
   color: white;
   text-transform: uppercase;
-  margin-right: 3rem;
+  margin-right: 5rem;
 
 }
 
@@ -315,4 +309,47 @@ html {
 .video iframe {
   height: 50rem;
   width: 80rem;
+}
+
+#umod {
+  margin-left: 3rem;
+  margin-top: 1rem;
+
+}
+
+#pass {
+  margin-left: 10rem;
+  margin-top: 3rem;
+
+}
+
+#modificar-form {
+  width: 400px;
+
+  border-radius: 10px;
+
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30rem;
+}
+
+.form-container p {
+  color: #282828;
+}
+
+#usuh1 {
+  text-align: center;
+  margin-top: 2rem;
+}
+/* Estilos para el menú desplegable */
+/* Estilos para el menú desplegable */
+.dropdown-menu {
+  color: black;
+  /* Cambiar el color del texto a negro */
+  background-color: white;
+  /* Cambiar el color de fondo a blanco */
 }
