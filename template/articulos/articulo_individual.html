@@ -6,8 +6,8 @@
 {% block contenido %}
 
 
-<section class="bg-light">
-    <div class="container pb-5">
+<section class="">
+    <div class="container pb-5" id="articuloss">
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
@@ -37,13 +37,11 @@
                         </ul>
 
                         <h6>Contenido:</h6>
-                        <p>{{ articulos.contenido | slice:":1200" }}</p>
-
-                        <!-- Contenido del artículo -->
-                        <h1>{{ articulo.titulo }}</h1>
-                        <p>{{ articulo.contenido }}</p>
-
-                        <!-- Mostrar la calificación promedio del artículo -->
+                        <div class="contenido-truncado" style="max-height: 300px; overflow-y: auto;">
+                            <p>{{ articulos.contenido | capfirst }}</p>
+                        </div>
+                        
+                        
 
                         <h3>Calificación promedio: <strong>{{ articulos.calificacion_promedio }}</strong></h3>
 
