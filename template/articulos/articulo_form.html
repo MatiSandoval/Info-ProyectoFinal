@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-<h2>Crear Artículo</h2>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar Artículo</button>
-</form>
-<!--Esto es para texto enriquecido para editor-->
+<div class="containerr2 pb-7">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 mt-5 agregar">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Crear Artículo</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success" style="float: right;">Guardar Artículo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% include 'articulos/sceditor.html' %}
 {% endblock %}
