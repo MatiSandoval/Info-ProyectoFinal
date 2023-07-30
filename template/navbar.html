@@ -25,12 +25,13 @@
                     <a class="nav-link" href="{% url 'apps.articulo:acerca_de' %}">Acerca de</a>
                 </li>
 
-                <button class="switch" id="switch">
-                    <span><i class="fa fa-sun" style="font-size:24px; color: floralwhite;"></i></span>
-                    <span><i class="fa fa-moon" style="font-size:24px; color: floralwhite;"></i></span>
-                </button>
+                
 
             </ul>
+            <button class="switch" id="switch">
+                <span><i class="fa fa-sun" style="font-size:24px; color: floralwhite;"></i></span>
+                <span><i class="fa fa-moon" style="font-size:24px; color: floralwhite;"></i></span>
+            </button>
             {% if user.is_authenticated %}
             {% for group in user.groups.all %}
             {% if group.name == 'Miembro'%}
@@ -42,6 +43,7 @@
 
             {% endif %}
             {% endfor %}
+            
             {% if user.imagen %}
             <h3 id="usuario">Bienvenid@, {{ user.first_name|default:user.username }}!</h3>
             <div class="dropdown">
@@ -53,7 +55,6 @@
                     style="color: black; background-color: white;">
                     <li><a class="dropdown-item" href="{% url 'apps.usuario:modificar_usuario' %}" style="color: black;">Modificar
                             usuario</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: black;">Modo oscuro/modo claro</a></li>
                     <li><a class="dropdown-item" href="{% url 'apps.usuario:password_reset' %}" style="color: black;">Restablecer contraseña</a></li>
                     <li><a class="dropdown-item" href="#" id="logout-button" style="color: black;">Cerrar Sesión</a></li>
                 </ul>
