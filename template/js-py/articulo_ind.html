@@ -1,0 +1,19 @@
+{% load static %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const estrellas = document.querySelectorAll('.estrellas');
+
+        if ('{{ user_rating }}') {
+            const calificacion = parseInt('{{ user_rating }}');
+            const radio = document.getElementById(`radio${5 - calificacion + 1}`);
+
+            if (radio) {
+                radio.checked = true;
+                for (let i = 0; i < 5 - calificacion; i++) {
+                    estrellas[i].classList.add('estrella-vacia');
+                }
+            }
+        }
+    });
+</script>
+<script src="{% static 'assets/js/articulos.js' %}"> </script>
