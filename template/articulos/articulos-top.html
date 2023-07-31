@@ -1,0 +1,65 @@
+{% load static %}
+<div class="row text-center pt-3">
+    <div class="col-lg-6 m-auto">
+        <h1 class="h1">ARTICULOS</h1>
+    </div>
+</div>
+<div class="container-fluid" id="main-content">
+    <div class="articulos-cont">
+        <div class="row fila-botones">
+            <div class="col-2 alfa">
+                <div class="filter-group">
+                    <h3>Orden alfabético</h3>
+                    <select class="form-control" id="alfabetico" onchange="updateButtonURL();">
+                        <option value="ascendente">Ascendente</option>
+                        <option value="descendente">Descendente</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-2 balfa">
+                <a class="btn btn-outline-success btn-lg" id="filtro-boton"
+                    href="{% url 'apps.articulo:articulos' %}?orden=ascendente"><i class="fa fa-filter"></i></a>
+            </div>
+            <div class="col-2 fechaa">
+                <div class="filter-group">
+                    <h3>Antigüedad</h3>
+                    <select class="form-control" id="antiguedad" onchange="updateButtonURL();">
+                        <option value="ascendente">Ascendente</option>
+                        <option value="descendente">Descendente</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-2 fechab">
+                <a class="btn btn-outline-success btn-lg" id="filtro-botona"
+                    href="{% url 'apps.articulo:articulos' %}?fecha=ascendente"><i class="fa fa-filter"></i></a>
+            </div>
+            <div class="col-2 cate">
+                <div class="filter-group">
+                    <h3>Categoria</h3>
+                    <select class="form-control" id="categoriasel" onchange="updateButtonURL();">
+                        <option value="0">Todos</option>
+                        <option value="1">Aguas y océanos</option>
+                        <option value="2">Energías renovables</option>
+                        <option value="3">Cambio climático</option>
+                        <option value="4">Educación ambiental</option>
+                        <option value="5">Políticas Públicas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-2">
+                <a class="btn btn-outline-success btn-lg" id="filtro-botonc" href="{% url 'apps.articulo:articulos' %}">
+                    <i class="fa fa-search"></i>
+                </a>
+                {% for group in user.groups.all %}
+                {% if group.name == 'Colaborador'%}
+                <div class="col-8">
+                    <a class="btn btn-success btn-lg agregararti" href="{% url 'apps.articulo:articulo_crear' %}"
+                        id="agregararticulo">Agregar Articulo</a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+</div>
