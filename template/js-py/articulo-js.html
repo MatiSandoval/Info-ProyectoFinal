@@ -1,0 +1,71 @@
+{% load static %}
+<script>
+    function updateButtonURL() {
+        //filtro orden alfabetico
+        const selector = document.getElementById("alfabetico");
+        const selectedValue = selector.options[selector.selectedIndex].value;
+        const boton = document.getElementById("filtro-boton");
+        const url = "{% url 'apps.articulo:articulos' %}?orden=" + selectedValue;
+        boton.href = url;
+        //filtro antigüedad
+        const selectora = document.getElementById("antiguedad");
+        const selectedValuea = selectora.options[selectora.selectedIndex].value;
+        const botona = document.getElementById("filtro-botona");
+        const urla = "{% url 'apps.articulo:articulos' %}?fecha=" + selectedValuea;
+        botona.href = urla;
+        const selectorc = document.getElementById("categoriasel");
+        const selectedValuec = selectorc.options[selectorc.selectedIndex].value;
+        const botonc = document.getElementById("filtro-botonc");
+
+        // Construimos la URL base sin el parámetro 'categorias'
+        var url2 = "{% url 'apps.articulo:articulos' %}";
+
+        // Verificamos si se seleccionó una categoría válida y actualizamos la URL si es necesario
+        if (selectedValuec && selectedValuec !== '0') {
+            url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='X' %}".replace('X', selectedValuec);
+        }
+
+        botonc.href = url2;
+    }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Obtener el valor del parámetro "orden" de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orden = urlParams.get('orden');
+        const fecha = urlParams.get('fecha');
+        // Seleccionar el elemento del select
+        const selectElement = document.getElementById("alfabetico");
+        const selectElement2 = document.getElementById("antiguedad");
+        // Preseleccionar el valor del select si corresponde
+        if (orden === 'ascendente' || orden === 'descendente') {
+            selectElement.value = orden;
+        }
+        if (fecha === 'ascendente' || fecha === 'descendente') {
+            selectElement2.value = fecha;
+        }
+
+    });
+</script>
+<script>
+    const contenidoParrafo = document.getElementById("miParrafo2").innerText;
+
+    function preselectCategoria() {
+        const selectElement = document.getElementById("categoriasel");
+
+        for (let i = 0; i < selectElement.options.length; i++) {
+            if (selectElement.options[i].innerText === contenidoParrafo) {
+                selectElement.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+    if (tieneDistintasCategorias) {
+        // Si hay artículos con distintas categorías, establecer "Todos" como opción seleccionada
+        document.getElementById("categoriasel").value = "0";
+    } else {
+        // Si todos los artículos tienen la misma categoría, hacer el preselect según el primer artículo
+        preselectCategoria();
+    }
+</script>

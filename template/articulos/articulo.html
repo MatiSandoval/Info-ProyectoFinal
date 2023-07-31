@@ -1,129 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block contenido %}
-
 <body>
-  <!-- Start Categories of The Month -->
   <section class="articulos">
-    <div class="row text-center pt-3">
-      <div class="col-lg-6 m-auto">
-        <h1 class="h1">ARTICULOS</h1>
-      </div>
-    </div>
-    <div class="container-fluid" id="main-content">
-      <div class="articulos-cont">
-        <div class="row fila-botones">
-          <div class="col-2 alfa">
-            <div class="filter-group">
-              <h3>Orden alfabético</h3>
-              <select class="form-control" id="alfabetico" onchange="updateButtonURL();">
-                <option value="ascendente">Ascendente</option>
-                <option value="descendente">Descendente</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-2 balfa">
-            <a class="btn btn-outline-success btn-lg" id="filtro-boton"
-              href="{% url 'apps.articulo:articulos' %}?orden=ascendente"><i class="fa fa-filter"></i></a>
-          </div>
-
-
-          <div class="col-2 fechaa">
-            <div class="filter-group">
-              <h3>Antigüedad</h3>
-              <select class="form-control" id="antiguedad" onchange="updateButtonURL();">
-                <option value="ascendente">Ascendente</option>
-                <option value="descendente">Descendente</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-2 fechab">
-            <a class="btn btn-outline-success btn-lg" id="filtro-botona"
-              href="{% url 'apps.articulo:articulos' %}?fecha=ascendente"><i class="fa fa-filter"></i></a>
-          </div>
-          <div class="col-2 cate">
-
-            <div class="filter-group">
-              <h3>Categoria</h3>
-              <select class="form-control" id="categoriasel" onchange="updateButtonURL();">
-                
-                <option value="0">Todos</option>
-                <option value="1">Aguas y océanos</option>
-                <option value="2">Energías renovables</option>
-                <option value="3">Cambio climático</option>
-                <option value="4">Educación ambiental</option>
-                <option value="5">Políticas Públicas</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-2">
-            <a class="btn btn-outline-success btn-lg" id="filtro-botonc" href="{% url 'apps.articulo:articulos' %}">
-              <i class="fa fa-search"></i>
-            </a>
-            {% for group in user.groups.all %}
-            {% if group.name == 'Colaborador'%}
-            <div class="col-8">
-              <a class="btn btn-success btn-lg agregararti" href="{% url 'apps.articulo:articulo_crear' %}" id="agregararticulo">Agregar Articulo</a>
-            </div>
-            {% endif %}
-            {% endfor %}
-          </div>
-          
-          {% block script %}
-          
-          <script>
-            function updateButtonURL() {
-              //filtro orden alfabetico
-              const selector = document.getElementById("alfabetico");
-              const selectedValue = selector.options[selector.selectedIndex].value;
-              const boton = document.getElementById("filtro-boton");
-              const url = "{% url 'apps.articulo:articulos' %}?orden=" + selectedValue;
-              boton.href = url;
-              //filtro antigüedad
-              const selectora = document.getElementById("antiguedad");
-              const selectedValuea = selectora.options[selectora.selectedIndex].value;
-              const botona = document.getElementById("filtro-botona");
-              const urla = "{% url 'apps.articulo:articulos' %}?fecha=" + selectedValuea;
-              botona.href = urla;
-              const selectorc = document.getElementById("categoriasel");
-              const selectedValuec = selectorc.options[selectorc.selectedIndex].value;
-              const botonc = document.getElementById("filtro-botonc");
-
-              // Construimos la URL base sin el parámetro 'categorias'
-              var url2 = "{% url 'apps.articulo:articulos' %}";
-
-              // Verificamos si se seleccionó una categoría válida y actualizamos la URL si es necesario
-              if (selectedValuec && selectedValuec !== '0') {
-                url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='X' %}".replace('X', selectedValuec);
-              }
-
-              botonc.href = url2;
-            }
-          </script>
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              // Obtener el valor del parámetro "orden" de la URL
-              const urlParams = new URLSearchParams(window.location.search);
-              const orden = urlParams.get('orden');
-              const fecha = urlParams.get('fecha');
-              // Seleccionar el elemento del select
-              const selectElement = document.getElementById("alfabetico");
-              const selectElement2 = document.getElementById("antiguedad");
-              // Preseleccionar el valor del select si corresponde
-              if (orden === 'ascendente' || orden === 'descendente') {
-                selectElement.value = orden;
-              }
-              if (fecha === 'ascendente' || fecha === 'descendente') {
-                selectElement2.value = fecha;
-              }
-              
-            });
-          </script>
-          {% endblock %}
-        </div>
-      </div>
-    </div>
+    {% include 'articulos/articulos-top.html' %}
     <div class="row row-eq-height" id="articulos-row">
       <script>
         var mismaCategoria = true;
@@ -166,34 +46,9 @@
       </div>
       {% empty %}
       <li> No hay articulos </li>
-      {% endfor %}
-      
-      <script>
-        const contenidoParrafo = document.getElementById("miParrafo2").innerText;
-
-          function preselectCategoria() {
-            const selectElement = document.getElementById("categoriasel");
-
-            for (let i = 0; i < selectElement.options.length; i++) {
-              if (selectElement.options[i].innerText === contenidoParrafo) {
-                selectElement.selectedIndex = i;
-                break;
-              }
-            }
-          }
-
-          if (tieneDistintasCategorias) {
-            // Si hay artículos con distintas categorías, establecer "Todos" como opción seleccionada
-            document.getElementById("categoriasel").value = "0";
-          } else {
-            // Si todos los artículos tienen la misma categoría, hacer el preselect según el primer artículo
-            preselectCategoria();
-          }
-      </script>
-     
+      {% endfor %}     
     </div>
   </section>
-  <!-- End Categories of The Month -->
-
+  {% include 'js-py/articulo-js.html' %}
 </body>
 {% endblock contenido %}
