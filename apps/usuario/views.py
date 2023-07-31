@@ -34,10 +34,10 @@ class RegistrarUsuario(CreateView):
         # Autenticar al usuario recién registrado
         login(self.request, self.object)
 
-        return response
+        return JsonResponse({'success': True, 'next_page': self.next_page})
 
     def form_invalid(self, form):
-        return JsonResponse({'success': False, 'message': ''})
+        return JsonResponse({'success': False, 'message': 'Error al intentar registrarse', 'errors': form.errors})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
