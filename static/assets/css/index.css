@@ -1,5 +1,4 @@
 
-
 html {
   overflow-x: hidden;
 }
@@ -21,6 +20,7 @@ nav ul li {
 section {
   background-color: rgb(39, 181, 91);
     font-family: 'Raleway', sans-serif;
+    margin-bottom: -1.3rem;
 }
 
 .heading {
@@ -63,6 +63,7 @@ section {
 
 #destacadas {
   background-color: rgb(82, 204, 126);
+  margin-top: -1rem;
 }
 
 .detalles .carousel {
@@ -100,6 +101,7 @@ section {
   background-size: cover;
   background-position: center;
   padding-bottom: 3rem;
+  
 }
 
 .footer .caja-contenedor {
@@ -132,10 +134,10 @@ section {
   text-underline-offset: 1rem;
 }
 
-.footer .caja-contenedor .caja .busca .colaboradores {
-  text-align: center;
+.footer .caja-contenedor .caja .busca {
+  
   padding-left: 30px;
-  display: flex;
+  margin-left: 5rem;
   align-items: center;
 }
 
@@ -205,6 +207,7 @@ html {
 
 .detalles {
   width: 100%;
+  background-color: rgb(82, 204, 126);
 }
 
 .detalles .cajaa {
@@ -271,30 +274,24 @@ html {
 .user-image {
   border-radius: 5rem;
   margin-right: 1rem;
-
-  /* Esto agrega bordes redondeados para dar un aspecto de círculo */
   border: 2px solid #fff;
-  /* Esto agrega un borde blanco alrededor de la imagen */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  /* Esto agrega una sombra suave a la imagen */
-  /* Agrega cualquier otro estilo que desees para personalizar la imagen del usuario */
 }
 
 #usuario {
   color: white;
   text-transform: uppercase;
   margin-right: 5rem;
-
+  margin-left: 2rem;
 }
 
 .custom-navbar {
   background-color: #04471C;
+  margin-bottom: -1rem;
 }
 
 .custom-navbar .navbar-nav .nav-link {
   color: #ebeaea;
-  /* Color blanco (puede cambiar el valor hexadecimal) */
-  /* Otros estilos personalizados que desee aplicar a los enlaces de navegación */
 }
 
 .video h1 {
@@ -352,4 +349,24 @@ html {
   /* Cambiar el color del texto a negro */
   background-color: white;
   /* Cambiar el color de fondo a blanco */
+}
+
+#btn-contacto{
+  margin-top: 3rem;
+}
+
+.container{
+  margin-top: 20px;
+    /* Ajusta la separación entre el encabezado y el formulario */
+    margin-bottom: 20px;
+}
+
+.cont-form {
+  margin-bottom: 20px;
+}
+.contactos{
+  margin-top: -3rem;
+}
+.sec-usu{
+  margin-top: -2rem;
 }

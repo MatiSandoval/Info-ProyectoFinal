@@ -4,29 +4,20 @@
 <title> {% block title %} Articulo: {{ articulos.titulo | capfirst }} {% endblock title %} </title>
 
 {% block contenido %}
-
-
-<section class="bg-light">
-    <div class="container pb-5">
+<section class="sec-articulos">
+    <div class="container pb-5" id="articuloss">
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
                     <img class="card-img img-fluid" src="{{ articulos.imagen.url }}" alt="Card image cap"
                         id="product-detail">
                 </div>
-                <div class="row">
-
-
-
-                </div>
             </div>
-
             <div class="col-lg-7 mt-5">
                 <div class="card">
                     <div class="card-body">
                         <h1 class="h2">{{ articulos.titulo | capfirst }}</h1>
                         <h5 id="public">Publicado: {{ articulos.fecha_publicacion | slice:":19" }}</h5>
-
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>Resumen: </h6>
@@ -35,23 +26,12 @@
                                 <p class=""><strong>{{ articulos.resumen | capfirst }}</strong></p>
                             </li>
                         </ul>
-
                         <h6>Contenido:</h6>
-                        <p>{{ articulos.contenido | slice:":1200" }}</p>
-
-                        <!-- Contenido del artículo -->
-                        <h1>{{ articulo.titulo }}</h1>
-                        <p>{{ articulo.contenido }}</p>
-
-                        <!-- Mostrar la calificación promedio del artículo -->
-
+                        <div class="contenido-truncado" style="max-height: 300px; overflow-y: auto;">
+                            <p>{{ articulos.contenido | capfirst }}</p>
+                        </div>
                         <h3>Calificación promedio: <strong>{{ articulos.calificacion_promedio }}</strong></h3>
-
-
-
-
                         {% if user.is_authenticated %}
-
                         <div class="justify-content-center">
                             <form action="{% url 'apps.articulo:calificar_articulo' articulos.id %}" method="post"
                                 id="calif">
@@ -71,36 +51,18 @@
                                 </div>
                             </form>
                             {% if articulos.calificacion.all %}
-                            {% for calificacion in articulos.calificacion.all %}
-                            {% if calificacion.usuario.username == user.username %}
-                            {% with calificacion.valor as user_rating %}
-                            {% ifchanged %}
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    const estrellas = document.querySelectorAll('.estrellas');
-
-                                    if ('{{ user_rating }}') {
-                                        const calificacion = parseInt('{{ user_rating }}');
-                                        const radio = document.getElementById(`radio${5 - calificacion + 1}`);
-
-                                        if (radio) {
-                                            radio.checked = true;
-                                            for (let i = 0; i < 5 - calificacion; i++) {
-                                                estrellas[i].classList.add('estrella-vacia');
-                                            }
-                                        }
-                                    }
-                                });
-                            </script>
-                            {% endifchanged %}
-                            {% endwith %}
+                                {% for calificacion in articulos.calificacion.all %}
+                                    {% if calificacion.usuario.username == user.username %}
+                                        {% with calificacion.valor as user_rating %}
+                                            {% ifchanged %}
+                                                {% include 'js-py/articulo_ind.html' %}
+                                            {% endifchanged %}
+                                        {% endwith %}
+                                    {% endif %}
+                                {% endfor %}
                             {% endif %}
-                            {% endfor %}
-                            {% endif %}
-                            
-                            {% endif %}
-
-                            <button id="ver-puntuaciones" class="btn btn-success">Ver Puntuaciones</button>
+                        {% endif %}
+                        <button id="ver-puntuaciones" class="btn btn-success">Ver Puntuaciones</button>
                         </div>
                         <div id="puntuaciones" style="display: none;">
                             {% if articulos.calificacion.all %}
@@ -113,14 +75,11 @@
                             <p>No hay calificaciones para este artículo.</p>
                             {% endif %}
                         </div>
-
                         <div class="row pb-3">
                             {% if user.is_authenticated %}
-
                             <div class="col d-grid">
                                 <a href="{% url 'apps.articulo:descargar_pdf' articulos.id %}" class="btn btn-primary"
                                     id="pdf">Descargar PDF</a>
-                                <!-- <a class="btn btn-success btn-lg" href="#comentario">Ir a comentar</a> -->
                             </div>
                             {% endif %}
                             {% for group in user.groups.all %}
@@ -129,112 +88,18 @@
                                 <a class="btn btn-success btn-lg"
                                     href="{% url 'apps.articulo:modificar' articulos.id %}">Modificar</a>
                             </div>
-
                             <div class="col d-grid">
                                 <a class="btn btn-danger btn-lg" href="#eliminar">Eliminar</a>
-
                             </div>
                             {% endif %}
                             {% endfor %}
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Close Content -->
 
-
-<!-- Start Article -->
-<section class="py-5">
-    <div class="container">
-        <div class="row text-center p-2 pb-3">
-            <h1>Comentarios</h1>
-        </div>
-
-        <!--Start Carousel Wrapper-->
-        <div id="carousel-related-product">
-
-            <div class="p-2 pb-3">
-
-                <center>
-                    <section id="comentarios" class="py-5">
-                        <div class="container-com">
-                            {% for comentario in comentarios %}
-                            <div class="p-2 pb-3">
-                                <div class="product-wap card rounded-0">
-                                    <div class="card rounded-0">
-                                        <a>{{ comentario.usuario }} - {{ comentario.fecha }}</a>
-                                    </div>
-                                    <div class="card-body">
-                                        <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                            <p>{{ comentario.texto }}</p>
-                                        </ul>
-                                        {% for group in user.groups.all %}
-                                        {% if group.name == 'Colaborador'%}
-                                        <a class="btn btn-danger btn-lg"
-                                            href="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">Eliminar
-                                            comentario</a>
-                                        <a class="btn btn-success btn-lg"
-                                            href="{% url 'apps.comentario:editar_comentario' comentario_id=comentario.pk %}">Editar
-                                            comentario</a>
-                                        {% endif %}
-                                        {% endfor %}
-                                        {% for group in user.groups.all %}
-                                        {% if group.name == 'Miembro'%}
-                                        {% if comentario.usuario.username == user.username %}
-                                        <a class="btn btn-danger btn-lg"
-                                            href="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">Eliminar
-                                            comentario</a>
-                                        <a class="btn btn-success btn-lg"
-                                            href="{% url 'apps.comentario:editar_comentario' comentario_id=comentario.pk %}">Editar
-                                            comentario</a>
-                                        {% endif %}
-                                        {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% empty %}
-                            <li>Aún no hay comentarios, ¿quieres dejar una reseña?</li>
-                            {% endfor %}
-
-                            <a id="comentario"></a>
-                            <div class="comentario"></div>
-
-                            <form method="POST" style="margin-bottom: 400px; margin-top: 100px;"
-                                action="{{ articulo.get_link_comentar }}">
-                                {% csrf_token %}
-                                {% for group in user.groups.all %}
-                                {% if group.name == 'Miembro' or group.name == 'Colaborador'%}
-                                <h2>Deja tu comentario</h2>
-                                {{ form }}
-                                <button type="submit" class="btn btn-success btn-lg">Comentar</button>
-                                {% endif %}
-                                {% endfor %}
-                                {% if user.is_authenticated %}
-                                {% else %}
-                                <h2>Debes iniciar sesion para comentar</h2>
-                                <a class="btn btn-success btn-lg"
-                                    href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">Iniciar
-                                    sesion</a>
-                                <input type="hidden" name="next" value="{{ request.path }}">
-
-                                {% endif %}
-                            </form>
-                            <div>
-                                <div>
-                    </section>
-                </center>
-            </div>
-        </div>
-    </div>
-
-    </div>
-    <script src="{% static 'assets/js/articulos.js' %}"> </script>
-</section>
-<!-- End Article -->
-
+{% include 'articulos/seccion_comentarios.html' %}
 {% endblock contenido %}
