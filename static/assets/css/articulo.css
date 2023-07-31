@@ -23,7 +23,7 @@
     /* Añade espacio interno */
     margin: 1rem;
     /* Margen exterior entre los contenedores */
-    transition: 0.2s linear;
+    
     word-wrap: break-word;
 }
 
@@ -230,4 +230,10 @@ input[type="radio"]:checked~.estrellas {
 }
 #pdf {
     width: 12rem;
+}
+.sec-articulos{
+    margin-top: -2rem;
+}
+.sec-mod{
+    margin-top: -2rem;
 }

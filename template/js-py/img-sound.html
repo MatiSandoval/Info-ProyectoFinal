@@ -1,0 +1,27 @@
+{% load static %}
+<script>
+    const images = document.querySelectorAll('a img');
+    function playSound(audioUrl) {
+        const audio = new Audio(audioUrl);
+        audio.play();
+        return audio;
+    }
+    function stopSound(audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+    images.forEach(image => {
+        let audio;
+
+        image.addEventListener('mouseenter', function () {
+            const audioUrl = this.parentElement.getAttribute('data-audio');
+            audio = playSound(audioUrl);
+        });
+
+        image.addEventListener('mouseleave', function () {
+            if (audio) {
+                stopSound(audio);
+            }
+        });
+    });
+</script>
