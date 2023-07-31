@@ -51,7 +51,7 @@ form .username {
   transform: translateY(-50%);
   font-size: 16px;
   pointer-events: none;
-  transition: .5s;
+  
 }
 
 .username span::before {
