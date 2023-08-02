@@ -19,18 +19,19 @@ from .views import IndexViews
 from . import views
 from django.conf import settings  
 from django.conf.urls.static import static
+from apps.articulo.views import carrusel_view
 
 # from .views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexViews.as_view(), name = 'index'),
+    path('', carrusel_view, name = 'index'),
     path('', include('apps.articulo.urls')),
     path('', include('apps.contacto.urls')),
     path('', include('apps.comentario.urls')),
     path('', include('apps.usuario.urls')),
     path('', include('django.contrib.auth.urls')),
-
+    
 ]
 
 if settings.DEBUG:  
