@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
 from .models import Calificacion
 from django.db.models import Avg
+import logging
 
 class ArticuloView(View):
     template_name = 'articulos/articulo.html'
@@ -193,3 +194,19 @@ def calificar_articulo(request, articulo_id):
             return redirect(reverse('apps.articulo:leer_articulo', kwargs={'id': articulo_id}))
 
     return render(request, 'articulos/articulo_individual.html', {'articulos': articulo})
+
+def carrusel_view(request):
+    # Obtener los tres mejores artículos ordenados por calificacion_promedio en orden descendente
+    articulos = Articulo.objects.all()
+    articulos = Articulo.objects.order_by('-calificacion_promedio')[:3]
+
+    # Imprimir los atributos de cada artículo en la consola
+    for articulo in articulos:
+        print("Título:", articulo.titulo)
+        print("Resumen:", articulo.resumen)
+        print("Calificación promedio:", articulo.calificacion_promedio)
+        print("---")
+
+    # Pasar los tres mejores artículos al contexto y renderizar la plantilla base.html
+    return render(request, 'base.html', {'mejores_articulos': articulos})
+

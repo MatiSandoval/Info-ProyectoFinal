@@ -12,28 +12,26 @@
             class="logo">
     </a>
     <div class="formulario">
-
         <h1>Inicio de Sesión</h1>
-
         <form method="post" id="loginForm">
             {% csrf_token %}
-            <div class="username">
-                <h5>Nombre de Usuario: </h5>
-                {{ form.username }}
+            <div class="form-floating mb-3">
+                <input type="text" name="username" class="form-control" id="floatingUsername" placeholder="Nombre de Usuario">
+                <label for="floatingUsername">Nombre de Usuario</label>
             </div>
-            <div class="contrasena">
-                <h5>Contraseña:</h5>
-                {{ form.password }}
+            <div class="form-floating mb-3">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+                <label for="floatingPassword">Contraseña</label>
             </div>
             <a class="recordar" href="{% url 'apps.usuario:password_reset' %}" id="olvido">¿Olvidó su contraseña?</a>
             <input type="submit" value="Iniciar Sesión" id="iniciar">
             <div class="registrarse">
-                <a href="{% url 'apps.usuario:registrar' %}?next={{ request.GET.next }}">¿Nuevo en A.I.R.E.?
-                    Regístrate</a>
+                <a href="{% url 'apps.usuario:registrar' %}?next={{ request.GET.next }}">¿Nuevo en A.I.R.E.? Regístrate</a>
             </div>
         </form>
-        {% include 'js-py/login-js.html' %}
-    </div>    
+    </div>
+     
+    {% include 'js-py/login-js.html' %}
 </body>
 {% endblock contenido %}
 
