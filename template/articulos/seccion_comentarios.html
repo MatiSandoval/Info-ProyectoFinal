@@ -24,8 +24,8 @@
                                         <a class="btn btn-danger btn-lg"
                                             href="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">Eliminar
                                             comentario</a>
-                                        <a class="btn btn-success btn-lg"
-                                            href="{% url 'apps.comentario:editar_comentario' comentario_id=comentario.pk %}">Editar
+                                        <a class="btn btn-success btn-lg editar-comentario-btn"
+                                            href="#" data-comentario-id="{{ comentario.pk }}">Editar
                                             comentario</a>
                                         {% endif %}
                                         {% endfor %}
@@ -35,8 +35,8 @@
                                         <a class="btn btn-danger btn-lg"
                                             href="{% url 'apps.comentario:eliminarComentario' comentario.pk %}">Eliminar
                                             comentario</a>
-                                        <a class="btn btn-success btn-lg"
-                                            href="{% url 'apps.comentario:editar_comentario' comentario_id=comentario.pk %}">Editar
+                                        <a class="btn btn-success btn-lg editar-comentario-btn"
+                                            href="#" data-comentario-id="{{ comentario.pk }}">Editar
                                             comentario</a>
                                         {% endif %}
                                         {% endif %}
@@ -44,34 +44,74 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
                             <li>Aún no hay comentarios, ¿quieres dejar una reseña?</li>
                             <a id="comentario"></a>
                             <div class="comentario"></div>
-                            <form method="POST" style="margin-bottom: 400px; margin-top: 100px;"
-                                action="{{ articulo.get_link_comentar }}">
-                                {% csrf_token %}
-                                {% for group in user.groups.all %}
-                                {% if group.name == 'Miembro' or group.name == 'Colaborador'%}
-                                <h2>Deja tu comentario</h2>
-                                {{ form }}
-                                <button type="submit" class="btn btn-success btn-lg">Comentar</button>
-                                {% endif %}
-                                {% endfor %}
-                                {% if user.is_authenticated %}
-                                {% else %}
-                                <h2>Debes iniciar sesion para comentar</h2>
-                                <a class="btn btn-success btn-lg"
-                                    href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario">Iniciar
-                                    sesion</a>
-                                <input type="hidden" name="next" value="{{ request.path }}">
-                                {% endif %}
-                            </form>
-                            <div>
-                            <div>
+                            <div class="comment-section">
+                                <form method="POST" class="comment-form">
+                                    {% csrf_token %}
+                                    {% for group in user.groups.all %}
+                                    {% if group.name == 'Miembro' or group.name == 'Colaborador' %}
+                                    <h2>Deja tu comentario</h2>
+                                    {{ form.as_p }}
+                                    <div class="d-grid gap-2">
+                                        <button type="submit" class="btn btn-success btn-lg">Comentar</button>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if not user.is_authenticated %}
+                                    <h2>Debes iniciar sesión para comentar</h2>
+                                    <a class="btn btn-success btn-lg" href="{% url 'apps.usuario:login' %}?next={{ request.path }}#comentario" id="iniciar-com">Iniciar sesión</a>
+                                    <input type="hidden" name="next" value="{{ request.path }}">
+                                    {% endif %}
+                                </form>
+                            </div>
+                        </div>
                     </section>
                 </center>
             </div>
         </div>
     </div>
-    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const editarComentarioBtns = document.querySelectorAll(".editar-comentario-btn");
+            editarComentarioBtns.forEach((btn) => {
+                btn.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const comentarioId = btn.getAttribute("data-comentario-id");
+                    const commentSection = btn.closest(".comment-section");
+                    const commentContent = commentSection.querySelector(".comment-content");
+                    const commentEditForm = commentSection.querySelector(`[data-comentario-id="${comentarioId}"]`);
+                    commentContent.style.display = "none";
+                    commentEditForm.style.display = "block";
+                });
+            });
+    
+            const editarComentarioForms = document.querySelectorAll(".comment-form");
+            editarComentarioForms.forEach((form) => {
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    const formData = new FormData(form);
+                    fetch(form.action, {
+                        method: "POST",
+                        body: formData,
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        // Puedes manejar la respuesta del servidor aquí si es necesario
+                        console.log(data);
+                        // Por ejemplo, si quieres ocultar el formulario de edición después de guardar los cambios:
+                        const commentSection = form.closest(".comment-section");
+                        const commentContent = commentSection.querySelector(".comment-content");
+                        commentContent.style.display = "block";
+                        form.style.display = "none";
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+                });
+            });
+        });
+    </script>
 </section>

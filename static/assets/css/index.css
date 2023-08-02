@@ -55,6 +55,13 @@ section {
   height: auto;
 
 }
+.detalles .caja-contenedor .carrusel-class {
+  max-width: 60%;
+  height: 60%;
+  align-items: center;
+  text-align: center;
+  margin-left: 20%;
+}
 .caja-contenedor h1{
   padding-top: 2rem;
   padding-bottom: 1rem;
@@ -72,14 +79,59 @@ section {
 
 }
 
+.carousel-inner {
+  position: relative; /* Necesario para posicionar los botones correctamente */
+}
 
+/* Estilos para el contenedor de los botones previo y siguiente */
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+.carousel-text-bg {
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 10px; 
+  border-radius: 8px; 
+}
+.carousel-control-prev {
+  float: left; 
+  background-color: white; 
+  padding: 5px; 
+  border-radius: 8px; 
+}
 
+/* Estilos para el icono del botón previo */
+.carousel-control-prev-icon {
+  background-color: transparent; /* Asegura que el icono sea transparente */
+}
+
+/* Estilos para el botón siguiente */
+.carousel-control-next {
+  float: right; /* Coloca el botón siguiente a la derecha del contenedor */
+  background-color: white; /* Agrega el fondo blanco */
+  padding: 5px; /* Ajusta el espacio entre el fondo blanco y el icono */
+  border-radius: 8px; /* Ajusta la forma redondeada del fondo blanco */
+}
+
+/* Estilos para el icono del botón siguiente */
+.carousel-control-next-icon {
+  background-color: transparent; /* Asegura que el icono sea transparente */
+}
+
+.carousel-img {
+  width: 1200px;
+  height: 800px;
+  object-fit: cover; /* Asegura que la imagen mantenga su relación de aspecto */
+}
 .detalles .caja-contenedor #carouselExampleDark .carousel-item h5 {
-  color: whitesmoke;
+  color: rgb(0, 0, 0);
 }
 
 .detalles .caja-contenedor #carouselExampleDark .carousel-item p {
-  color: whitesmoke;
+  color: rgb(0, 0, 0);
 }
 
 .detalles .caja-contenedor h1 {

@@ -1,5 +1,7 @@
 .comentarios-seccion {
     background-color: rgb(39, 181, 91);
+    color: white; /* Cambiar el color del texto a blanco */
+    margin-top: 20px; /* Ajustar el espaciado superior */
 }
 
 #tituloComentario {
@@ -115,3 +117,23 @@
     margin-left: 100px;
     margin-right: 100px;
 }
+.comment-form {
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  
+  .custom-textarea {
+    margin-top:3rem;
+    background-color: #002c11;
+    color:white;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    resize: none; 
+    height: auto; 
+    width: 100%; 
+    max-width: 590px; 
+  }
+  
