@@ -1,6 +1,6 @@
 from django.urls import path
 # froarticulosm .views import  Importacion para funcion
-from .views import ArticuloView, descargar_pdf
+from .views import ArticuloView, descargar_pdf,carrusel_view
 from . import views
 
 app_name = 'apps.articulo'
