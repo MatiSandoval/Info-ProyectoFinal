@@ -7,7 +7,7 @@ from .models import Comentario
 from .forms import ComentarioForm
 from django.views.generic import DeleteView
 from apps.usuario.models import Usuario
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from apps.articulo.models import Articulo
 
 # Create your views here.
@@ -54,8 +54,14 @@ def agregarComentario(request, id):
 class DeleteComentario(DeleteView):
     model = Comentario
     template_name = 'comentario/eliminarComentario.html'
-    success_url = reverse_lazy('apps.articulo:articulos')
 
+    def get_success_url(self):
+        comentario = self.get_object()
+        articulo_id = comentario.articulo.id
+
+        articulo_url = reverse('apps.articulo:leer_articulo', kwargs={'id': articulo_id})
+
+        return articulo_url
 
 
 def detalle_articulo(request, articulo_id):
