@@ -1,16 +1,11 @@
-<<<<<<< HEAD
 Grupo N° 4
 #Clerici, María Silvana
 #Sandoval, Matías
 #Mustafá, Amir
 #Betker, Braian
 #Gómez, Franco
-=======
-Grupo N° 4
-#Clerici, María Silvana
-#Sandoval, Matías
-#Mustafá, Amir
-#Betker, Braian
-#Gómez, Franco
->>>>>>> b9af18b254bad1a97cc202d1818a07fac2db8cf2
 #Robeff, Santiago
+#Gonzalez Mauro
+#Menjoulet Felipe
+#Barrios Roberto
+#Acevedo Cristian
