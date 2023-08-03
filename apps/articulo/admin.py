@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Categoria, Articulo, Calificacion #Importo las clases o medelos
+from .models import Categoria, Articulo, Calificacion 
 
-# Register your models here.
 
 @admin.register(Articulo)
 class ArticuloAdmin(admin.ModelAdmin): 

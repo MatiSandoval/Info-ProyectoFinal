@@ -4,136 +4,136 @@
 {% load static %}
 {% block contenido %}
 
-<section class="about-section">
+<section class="acerca_de" id="acerca_de">
 
     <div class="services_main">
-    	<div class="container">
-    		<div>
-    			<br><h1 class="titulo">Bienvenidos a nuestro blog dedicado a difundir temas ambientales</h1><br>
-
-                <br>
-                <h2 style="text-align: center;">Nuestra misión</h2>
-                <p style="text-align: center;">
-                    Buscamos convertir a la tierra en un lugar más justo y sano, mejorando su salud y la actitud de los seres humanos. Somos una ecorganización digital para la sostenibilidad.
-                    Queremos otro ambiente. Queremos una tierra restaurada. Para ello ponemos a disposición nuestra fuerza, nuestra labor, los conocimientos y la experiencia de quienes trabajan con esa finalidad.
-                    Debemos aprender con el planeta para corregir lo que está mal. Esta ecorganización nace en 2023 de la mano del Informatorio Chaco 2023. Centrad@s en principios compartidos que se fundan en la agenda 2030 de la ONU.
-                    Valores que apuntan a la sustentabilidad ambiental, económica y social.
-                </p>
+                    <h1 class="heading">Somos AIRE</h1>
+                    <h2 class="">Un blog dedicado a difundir temas ambientales</h2>
+                    <div class="columna">
+                        <div class="content">
+                            <p style="text-align: center;" class="p-acerca" id="buscamos">
+                                Buscamos convertir a la Tierra en un lugar más justo y sano, mejorando su salud y la actitud de los seres humanos.
+                                <br>
+                                Somos una ecorganización digital para la sostenibilidad que busca otro ambiente y para ello ponemos a disposición nuestra fuerza, 
+                                labor, conocimientos y la experiencia de quienes trabajan con esa finalidad. Debemos aprender con el planeta para corregir lo que está mal. 
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 nuestra-historia">
+                                <div class="columna">
+                                    <h2 style="text-align: justify;">Nuestra Historia</h2>
+                                </div>
+                            </div>
+                            <div class="col-md-6 cont-p">
+                                <p class="p-acerca" id="historia-p">
+                                Esta ecorganización nace en 2023 de la mano del Informatorio Chaco 2023, en la Provincia del Chaco,
+                                República Argentina, en sintonía con la Agenda 2030 para el Desarrollo Sostenible, adoptada por la Asamblea General
+                                Organización de las Naciones Unidas (ONU). <br>
+                                En tal sentido, nos posicionamos como una organización no gubernamental (ONG) conformada por un grupo de
+                                habitantes que pretenden incidir en los planos social, educativo, económico y político. <br>
+                                Ente de naturaleza altruista dirigido a toda persona preocupada por adoptar hábitos de vida sostenibles.
+                                La convocatoria es dar pie a las personas a que utilicen la página para poder subir todo tipo de
+                                artículos referidos al cuidado del medio ambiente.
+                                Como por ejemplo: eliminar los basurales, limpiar ríos y recomponer cursos de agua históricos,
+                                actualmente abandonados. <br>
+                                Aquellas presentaciones breves para pequeños grupos de estudiantes es la semilla que
+                                impulsa y cobra vida en esta entidad que finalmente ve la luz en 2023. Todo gracias al impulso de personas
+                                persistentes y esforzadas que pretenden un universo mejor.</p>
+                            </div>
+                        </div>
+                    </div>
                 <hr>
-
-                <h2 style="text-align: center;">Algo de nuestra Historia</h2>
-    			<p style="color: #050000; text-align: center;">
-                    Esta entidad nace en la Provincia del Chaco, República Argentina, en sintonía con la Agenda 2030 para el
-                    Desarrollo Sostenible, adoptada por la Asamblea General Organización de las Naciones Unidas (ONU). En tal
-                    sentido, nos posicionamos como una organización no gubernamental (ONG) conformada por un grupo de habitantes que
-                    pretenden incidir en los planos social, educativo, económico y político. Ente de naturaleza altruista dirigido a
-                    toda persona preocupada por adoptar hábitos de vida sostenibles.
-                    La convocatoria es eliminar los basurales, limpiar ríos y recomponer cursos de agua históricos, actualmente
-                    abandonados. Aquellas presentaciones breves para pequeños grupos de estudiantes es la semilla que impulsa y
-                    cobra vida en esta entidad que finalmente ve la luz en 2023. Todo gracias al impulso de personas persistentes y
-                    esforzadas que pretenden un universo mejor.
-                </p>
-                <hr>
-
-                <h2 style="text-align: center;">Colaboradores</h2><br>
-
-                <section class="nosotros">                
-
-                    <div class="col-2">
-                        <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Roberto.png' %}">
+                <div class="nuestro-equipo"><h2>NUESTRO EQUIPO</h2></div>
+                <div class="nosotros container-fluid">
+                    <div class="row">
+                        <div class="col-6 col-md-2">
+                            <div class="map_icon">
+                                <img src="{% static 'assets/nosotros/Franco.jpg' %}">
+                            </div>
+                            <p id="Franco">
+                                <a href="https://www.linkedin.com/in/francomedinagomez/" class="boton-link">Franco</a>
+                            </p>
                         </div>
-                        <p id="Roberto">
-                            <a href="#" class="boton-link">Roberto</a>
-                        </p>
-                    </div>
-
-                    <div class="col-2">
-                        <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Amir.png' %}">
+                        <div class="col-6 col-md-2">
+                            <div class="map_icon">
+                                <img src="{% static 'assets/nosotros/Amir.jpeg' %}">
+                            </div>
+                            <p id="Amir">
+                                <a href="https://www.linkedin.com/in/amir-mustafa-b71b0b282/" class="boton-link">Amir</a>
+                            </p>
                         </div>
-                        <p id="Amir">
-                            <a href="#" class="boton-link">Amir</a>
-                        </p>
-                    </div>
-
-
-                    <div class="col-2">
-                        <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Cristian.png' %}">
+                        <div class="col-6 col-md-2">
+                            <div class="map_icon">
+                                <img src="{% static 'assets/nosotros/Matias.jpg' %}">
+                            </div>
+                            <p id="Matías">
+                                <a href="https://www.linkedin.com/in/mafosdeveloper/" class="boton-link">Matías</a>
+                            </p>
                         </div>
-                        <p id="Cristian">
-                            <a href="#" class="boton-link">Cristian</a>
-                        </p>
-                    </div>
-
-                    <div class="col-2">
-                        <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Mauro.jpg' %}">
+                        <div class="col-6 col-md-2">
+                            <div class="map_icon">
+                                <img src="{% static 'assets/nosotros/Cristian.jpg' %}">
+                            </div>
+                            <p id="Cristian">
+                                <a href="https://www.linkedin.com/in/cristian-acevedo-12507523a/" class="boton-link">Cristian</a>
+                            </p>
                         </div>
-                        <p id="Mauro">
-                            <a href= https://www.linkedin.com/in/mauro-gonzalez-b82b60275/ class="boton-link">Mauro</a>
-                        </p>
-                    </div>
-
-                    <div class="col-2">
-                        <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Matías.png' %}">
+                        <div class="col-6 col-md-2">
+                            <div class="map_icon">
+                                <img src="{% static 'assets/nosotros/Mauro.jpg' %}">
+                            </div>
+                            <p id="Mauro">
+                                <a href=https://www.linkedin.com/in/mauro-gonzalez-b82b60275/ class="boton-link">Mauro</a>
+                            </p>
                         </div>
-                        <p id="Matías">
-                            <a href="https://www.linkedin.com/in/mafosdeveloper/" class="boton-link">Matías</a>
-                        </p>
-                    </div>
-
-                    <div class="col-2">
+                    <div class="col-6 col-md-2">
                         <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Santiago.png' %}">
+                            <img src="{% static 'assets/nosotros/Santiago.jpg' %}">
                         </div>
                         <p id="Santiago">
-                            <a href="#" class="boton-link">Santiago</a>
+                            <a href="https://www.linkedin.com/in/santi-robeff-a672801b8" class="boton-link">Santiago</a>
                         </p>
                     </div>
-
-                    <div class="col-2">
+                    <div class="col-6 col-md-2">
                         <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Silvana.jpeg' %}">
+                            <img src="{% static 'assets/nosotros/Silvana.jpg' %}">
                         </div>
                         <p id="Silvana">
-                            <a href="#" class="boton-link">Silvana</a>
+                            <a href="linkedin.com/in/maría-silvana-clerici-4007ab186" class="boton-link">Silvana</a>
                         </p>
                     </div>
-
-                    <div class="col-2">
+                    <div class="col-6 col-md-2">
                         <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Braian.jpeg' %}">
+                            <img src="{% static 'assets/nosotros/Roberto.jpg' %}">
                         </div>
-                        <p id="Braian">
-                            <a href="#" class="boton-link">Braian</a>
+                        <p id="Roberto">
+                            <a href="https://www.linkedin.com/in/rober-barrios-801764268/" class="boton-link">Roberto</a>
                         </p>
                     </div>
-
-                    <div class="col-2">
+                    <div class="col-6 col-md-2">
                         <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Franco.jpeg' %}">
-                        </div>
-                        <p id="Franco">
-                            <a href="#" class="boton-link">Franco</a>
-                        </p>
-                    </div>
-
-                    <div class="col-2">
-                        <div class="map_icon">
-                            <img src="{% static 'assets/nosotros/Felipe.png' %}">
+                            <img src="{% static 'assets/nosotros/Felipe.jpg' %}">
                         </div>
                         <p id="Felipe">
-                            <a href="#" class="boton-link">Felipe</a>
+                            <a href="https://www.linkedin.com/in/felipe-menjoulet-366729254" class="boton-link">Felipe</a>
                         </p>
                     </div>
-
-                </section>                   
+                    <div class="col-6 col-md-2">
+                        <div class="map_icon">
+                            <img src="{% static 'assets/nosotros/Braian.jpg' %}">
+                        </div>
+                        <p id="Braian">
+                            <a href="https://www.linkedin.com/" class="boton-link">Braian</a>
+                        </p>
+                    </div>
+                    
+                </div>
+        </div>                   
                 
-    		</div>    
-    	</div>
+</div>
 
 
 </section>

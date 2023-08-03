@@ -2,7 +2,7 @@
     {% csrf_token %}
     
     {% load crispy_forms_tags %}
-{{formulario|crispy }}
-
+    {{formulario|crispy }}
     <input name="" id="" class="btn btn-success" style="float: right;" type="submit" value="Confirmar">
+    <a class="btn btn-danger" href="{{ request.GET.next }}">Cancelar</a>
 </form>

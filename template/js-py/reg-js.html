@@ -1,0 +1,53 @@
+{% load static %}
+<div id="sweetAlertContainer"></div>
+<script>
+    function mensaje() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al intentar registrarse',
+            text: 'Parece que algo estuvo mal',
+            footer: '',
+        });
+    }
+
+    function mensaje2(data) {
+        var x = "{% url 'index' %}";
+        var next_page = "{{ request.GET.next }}";
+        if (data.success) {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Te has registrado correctamente!',
+                text: '',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok',
+            }).then((result) => {
+                window.location.href = next_page || x;
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al intentar registrarse',
+                text: data.message,
+                footer: '',
+            });
+        }
+    }
+    document.getElementById('registroForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var form = e.target;
+        var formData = new FormData(form);
+        var url = form.action;
+
+        fetch(url, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+        })
+            .then(response => response.json())
+            .then(data => mensaje2(data))
+            .catch(error => mensaje());
+    });
+</script>

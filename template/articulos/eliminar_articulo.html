@@ -3,18 +3,15 @@
 {% block titulo %} Eliminar Articulo {% endblock %}
 
 {% block contenido %}
-
-<div class="card">
-    <div class="card-header">
-        Eliminar un articulo
-    </div>
-    <div class="card-body">
-        <p>¿Estás seguro de que deseas eliminar el artículo "{{ articulo.titulo }}"?</p>
+<section class="elim-art">
+    <div class="elim-container"
+        style="text-align: center; margin: 1rem auto; padding: 20px; width: 100%; max-width: 400px;">
+        <h1>¿Estás seguro de que deseas eliminar el artículo "{{ articulo.titulo }}"?</h1>
         <form method="post">
             {% csrf_token %}
-            <input type="submit" value="Eliminar">
+            <input class="btn btn-danger" type="submit" value="Si, eliminar">
+            <a class="btn btn-success" href="{{ request.GET.next }}">Cancelar</a>
         </form>
     </div>
-</div>
-
+</section>
 {% endblock %}
