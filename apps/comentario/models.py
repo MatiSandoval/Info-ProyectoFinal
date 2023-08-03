@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-# Create your models here.
 
 class Comentario(models.Model):
     articulo = models.ForeignKey('articulo.Articulo', on_delete=models.CASCADE, related_name= 'comentarios')

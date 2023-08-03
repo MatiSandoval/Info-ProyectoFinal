@@ -25,8 +25,6 @@ class ArticuloView(View):
         categoria_id = request.GET.get('categoria')
         
         print('fecha:', fecha)
-
-        # Obtenemos todos los artículos y los ordenamos según el criterio seleccionado
         articulos = Articulo.objects.all()
 
         if orden == 'ascendente':
@@ -38,23 +36,13 @@ class ArticuloView(View):
             articulos = articulos.order_by('fecha_publicacion')
         elif fecha == 'descendente':
             articulos = articulos.order_by('-fecha_publicacion')
-
-        # Si se proporciona el parámetro 'categorias', filtramos los artículos por la categoría seleccionada
         if categorias is not None and categorias.isdigit() and categorias != '0':
-            categorias = int(categorias)  # Convertimos 'categorias' a un número entero
+            categorias = int(categorias) 
             articulos = articulos.filter(categoria=categorias)
-
-        # Obtenemos todas las categorías para mostrarlas en el filtro
         categorias = Categoria.objects.all()
-
-        # Renderizamos la plantilla HTML si no se solicita la descarga del PDF
         if not categoria_id:
             return render(request, 'articulos/articulo.html', {'articulos': articulos, 'categorias': categorias, 'categoria_id': categoria_id})
-
-        # Supongamos que se generó el archivo PDF en 'articulos.pdf'
         pdf_file_path = 'articulos.pdf'
-
-        # Abre el archivo PDF y devuelve su contenido como una respuesta
         with open(pdf_file_path, 'rb') as pdf_file:
             response = HttpResponse(pdf_file.read(), content_type='application/pdf')
             response['Content-Disposition'] = f'attachment; filename="articulo_{categoria_id}.pdf"'
@@ -122,14 +110,19 @@ def articulo_actualizar(request, pk):
 def acerca_de(request):
     return render(request, 'acercade/acercade.html')
 
-def modificar(request,id):
-    articulos = Articulo.objects.get(id=id)
-    formulario = ArticuloForm(request.POST or None, request.FILES or None, instance=articulos)
-    
+def modificar(request, id):
+    articulo = Articulo.objects.get(id=id)
+    formulario = ArticuloForm(request.POST or None, request.FILES or None, instance=articulo)
+
     if formulario.is_valid() and request.POST:
         formulario.save()
-        return redirect('apps.articulo:articulos')    
-    return render(request, 'articulos/modificar.html', {'formulario':formulario})
+        next_url = request.GET.get('next', None)
+        if next_url:
+            return redirect(next_url)
+        else:
+            return redirect('apps.articulo:articulos')
+            
+    return render(request, 'articulos/modificar.html', {'formulario': formulario})
 
 def eliminar_articulo(request,articulo_id):
     articulo = get_object_or_404(Articulo, pk=articulo_id)
@@ -140,19 +133,12 @@ def eliminar_articulo(request,articulo_id):
     return render(request, 'articulos/eliminar_articulo.html', {'articulo': articulo})
 
 def descargar_pdf(request, articulo_id):
-    # Obtener el artículo específico
     articulo = get_object_or_404(Articulo, id=articulo_id)
-
-    # Obtener el contenido del template del PDF
     template = get_template('articulos/articulo_pdf.html')
     context = {'articulos': articulo}
     html = template.render(context)
-
-    # Crear el archivo PDF
     result = BytesIO()
     pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
-
-    # Verificar si se generó correctamente el PDF
     if not pdf.err:
         response = HttpResponse(result.getvalue(), content_type='application/pdf')
         response['Content-Disposition'] = f'attachment; filename="{articulo.titulo}.pdf"'
@@ -168,45 +154,31 @@ def calificar_articulo(request, articulo_id):
 
     if request.method == 'POST':
         valor = request.POST.get('valor')
-        # Asegúrate de validar que 'valor' tenga un valor válido antes de guardar la calificación
         if valor is not None and valor.isdigit():
             valor = int(valor)
-
-            # Crear una instancia de Calificacion y guardarla en la base de datos
             calificacion, created = Calificacion.objects.get_or_create(
                 articulo=articulo,
                 usuario=request.user,
                 defaults={'valor': valor}
             )
-
-            # Si la calificación ya existía, actualizamos el valor
             if not created:
                 calificacion.valor = valor
                 calificacion.save()
-
-            # Recalculamos la calificación promedio del artículo
             calificacion_promedio = Calificacion.objects.filter(articulo=articulo).aggregate(Avg('valor'))['valor__avg']
             if calificacion_promedio is not None:
                 articulo.calificacion_promedio = round(calificacion_promedio, 2)
                 articulo.save()
-
-            # Redirigir al usuario a la página de detalles del artículo
             return redirect(reverse('apps.articulo:leer_articulo', kwargs={'id': articulo_id}))
 
     return render(request, 'articulos/articulo_individual.html', {'articulos': articulo})
 
 def carrusel_view(request):
-    # Obtener los tres mejores artículos ordenados por calificacion_promedio en orden descendente
     articulos = Articulo.objects.all()
     articulos = Articulo.objects.order_by('-calificacion_promedio')[:3]
-
-    # Imprimir los atributos de cada artículo en la consola
     for articulo in articulos:
         print("Título:", articulo.titulo)
         print("Resumen:", articulo.resumen)
         print("Calificación promedio:", articulo.calificacion_promedio)
         print("---")
-
-    # Pasar los tres mejores artículos al contexto y renderizar la plantilla base.html
     return render(request, 'base.html', {'mejores_articulos': articulos})
 

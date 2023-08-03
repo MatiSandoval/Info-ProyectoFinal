@@ -6,10 +6,13 @@ estrellasInputs.forEach(estrellaInput => {
         formulario.submit();
     });
 });
-// Obtener el botón y el contenedor de puntuaciones
-const verPuntuacionesBtn = document.getElementById('ver-puntuaciones');
-const puntuacionesContainer = document.getElementById('puntuaciones');
-// Agregar un evento al hacer clic en el botón
-verPuntuacionesBtn.addEventListener('click', function () {
-    puntuacionesContainer.style.display = puntuacionesContainer.style.display === 'none' ? 'block' : 'none';
-});
+                            // Agregar un evento al hacer clic en el botón
+                            document.getElementById('ver-puntuaciones').addEventListener('click', function () {
+                                const puntuacionesContainer = document.getElementById('puntuaciones');
+                                if (puntuacionesContainer.style.display === 'none') {
+                                    puntuacionesContainer.style.display = 'block';
+                                } else {
+                                    puntuacionesContainer.style.display = 'none';
+                                }
+                            });
+                        
