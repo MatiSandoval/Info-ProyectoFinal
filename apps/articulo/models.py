@@ -4,7 +4,6 @@ from django.utils import timezone
 from django.urls import reverse_lazy
 from django.conf import settings
 
-#Create your models here.
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=60, null=False)

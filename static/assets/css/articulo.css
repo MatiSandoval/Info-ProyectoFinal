@@ -1,6 +1,3 @@
-
-
-
 .row-eq-height {
     display: flex;
     flex-wrap: wrap;
@@ -17,19 +14,16 @@
     border: 0.6rem solid rgb(31, 69, 16);
     border-radius: 2rem;
     max-width: 50rem;
-    /* Tamaño máximo deseado para los artículos */
-    /* Hace el contenedor responsivo */
     padding: 2rem;
-    /* Añade espacio interno */
     margin: 1rem;
-    /* Margen exterior entre los contenedores */
-    
+
     word-wrap: break-word;
 }
 
 .articulo-contenedor .resumen {
     text-align: justify;
 }
+
 .articulo-contenedor:hover {
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
@@ -46,9 +40,9 @@
 .articulo-contenedor h1,
 .articulo-contenedor h5 {
     color: black;
-    
+
     font-weight: normal;
-    
+
 }
 
 #imagen-articulo {
@@ -83,10 +77,12 @@
     height: 3rem;
     text-transform: uppercase;
 }
+
 .contenido-truncado {
     border: 1px solid #ccc;
     padding: 10px;
 }
+
 .articulo-contenedor .fecha {
     color: rgb(110, 110, 107);
     font-family: 'Courier New', Courier, monospace;
@@ -121,10 +117,6 @@
 
 }
 
-/* #agregararticuloo{
-    margin-top: 7rem;
-    
-} */
 .agregararti {
 
     margin-bottom: -3rem;
@@ -196,15 +188,12 @@ input[type="radio"]:checked~.estrellas {
 
 .clasificacion>input:checked~label {
     color: orange;
-    /* Cambia el color de las estrellas seleccionadas */
 }
 
 #calif .col-4 {
     display: flex;
     justify-content: center;
-    /* Centra el botón horizontalmente */
     margin-top: 10px;
-    /* Agrega un espacio entre las estrellas y el botón */
 }
 
 #puntuaciones ul li {
@@ -223,17 +212,24 @@ input[type="radio"]:checked~.estrellas {
     margin-right: 1rem;
     font-size: 1.2rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    /* Aumentar el tamaño de fuente a 1.2 rem (puedes ajustar el valor según tus necesidades) */
 }
-.botoness{
+
+.botoness {
     margin-top: 3rem;
 }
+
 #pdf {
     width: 12rem;
 }
-.sec-articulos{
+
+.sec-articulos {
+    padding-top: 3rem;
+}
+
+.sec-mod {
     margin-top: -2rem;
 }
-.sec-mod{
-    margin-top: -2rem;
+
+.elim-conteiner form {
+    background-color: rgb(39, 181, 91);
 }

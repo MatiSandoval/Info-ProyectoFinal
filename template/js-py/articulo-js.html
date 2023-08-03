@@ -13,14 +13,11 @@
         const botona = document.getElementById("filtro-botona");
         const urla = "{% url 'apps.articulo:articulos' %}?fecha=" + selectedValuea;
         botona.href = urla;
+        //filtro categoria
         const selectorc = document.getElementById("categoriasel");
         const selectedValuec = selectorc.options[selectorc.selectedIndex].value;
         const botonc = document.getElementById("filtro-botonc");
-
-        // Construimos la URL base sin el parámetro 'categorias'
         var url2 = "{% url 'apps.articulo:articulos' %}";
-
-        // Verificamos si se seleccionó una categoría válida y actualizamos la URL si es necesario
         if (selectedValuec && selectedValuec !== '0') {
             url2 = "{% url 'apps.articulo:articulos_por_categoria' categorias='X' %}".replace('X', selectedValuec);
         }
@@ -34,10 +31,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         const orden = urlParams.get('orden');
         const fecha = urlParams.get('fecha');
-        // Seleccionar el elemento del select
         const selectElement = document.getElementById("alfabetico");
         const selectElement2 = document.getElementById("antiguedad");
-        // Preseleccionar el valor del select si corresponde
         if (orden === 'ascendente' || orden === 'descendente') {
             selectElement.value = orden;
         }
@@ -48,6 +43,7 @@
     });
 </script>
 <script>
+    //obtiene las categorias para cargarse en el selector
     const contenidoParrafo = document.getElementById("miParrafo2").innerText;
 
     function preselectCategoria() {
@@ -62,10 +58,8 @@
     }
 
     if (tieneDistintasCategorias) {
-        // Si hay artículos con distintas categorías, establecer "Todos" como opción seleccionada
         document.getElementById("categoriasel").value = "0";
     } else {
-        // Si todos los artículos tienen la misma categoría, hacer el preselect según el primer artículo
         preselectCategoria();
     }
 </script>

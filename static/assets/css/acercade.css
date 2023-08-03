@@ -1,0 +1,182 @@
+@media (max-width: 767px) {
+    .nosotros .row {
+        justify-content: center;
+    }
+
+    .col-6 {
+        width: 100%;
+        max-width: 200px;
+        margin-left: 3rem;
+        margin-bottom: 20px;
+    }
+}
+
+.nosotros {
+    padding: 20px;
+}
+
+.map_icon img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    filter: grayscale(80%);
+}
+
+.map_icon {
+    display: flex;
+    justify-content: center;
+}
+
+.col-6 {
+    margin-left:3rem ;
+    margin-right: -1rem;
+}
+
+@media (max-width: 767px) {
+    .nosotros {
+        gap: 20px;
+    }
+
+    .col-6 {
+        width: 100%;
+        margin-left: 3rem;
+            margin-right: -1rem;
+    }
+}
+.boton-link {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    background-color: #04471C;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 150px;
+}
+
+.boton-link:hover {
+    background-color: #2980b9;
+}
+
+.acerca_de {
+    background: url("../img/acercade_fondo.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 3rem;
+    max-width:100%;
+    height: 100rem auto;
+}
+.acerca_de .nosotros{
+    align-items: center;
+}
+.content {
+    text-align: right;
+}
+.acerca_de .heading {
+    margin-left: 10rem;
+}
+
+.acerca_de .columna {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.acerca_de .columna .image {
+    flex: 1 1 40rem;
+}
+
+.acerca_de .columna .image img {
+    width: 80%;
+    position: relative;
+    bottom: 0rem;
+    top: 3rem;
+}
+
+.acerca_de .columna .content {
+    flex: 1 1 40rem;
+}
+
+.acerca_de .columna .content h3 {
+    font-size: 3rem;
+    color: #333;
+}
+
+.acerca_de .columna .content p {
+    font-size: 1.5rem;
+    color: #666;
+    padding: 1rem 0;
+}
+.services_main{
+    padding-top:5rem;
+    text-align: center;
+}
+.services_main h2{
+    font-size: 2.5rem;
+    color:#050956;
+}
+#buscamos{
+    color: black;
+}
+#historia-p{
+    width: 90vw;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 3rem;
+}
+@media (min-width: 768px) {
+    #historia-p {
+        font-size: 18px;
+        width: 70vw;
+    }
+}
+@media (min-width: 992px) {
+    #historia-p {
+        font-size: 20px;
+        width: 50vw;
+    }
+}
+
+.nuestra-historia{
+    margin-top: 5rem;
+    margin-right: -5rem;
+}
+.nuestra-historia h2{
+    margin-top: 7rem;
+    margin-left: -7rem;
+    color:#050c96;
+    background-color: rgba(255, 255, 255, 0.872);
+    border-radius: .5rem;
+    text-transform: uppercase;
+}
+.nuestro-equipo h2 {
+    display: inline-block;
+    margin-left: -1rem;
+    padding: 0.5rem 1rem;
+    color: #050c96;
+    background-color: rgba(255, 255, 255, 0.872);
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+}
+.acerca_de .p-acerca{
+    color:rgb(0, 0, 0);
+    background-color: rgba(136, 249, 255, 0.6);
+    
+}
+.acerca_de p{
+text-align: justify;
+}
+.heading {
+    background-color: #050956;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 4.5rem;
+    text-transform: uppercase;
+}
