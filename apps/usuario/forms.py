@@ -12,8 +12,8 @@ class RegistroUsusarioForm(UserCreationForm):
     
 
     class LoginForm(forms.Form):
-        username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Nombre de usuario'}))
-        password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña'}))
+        username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'floatingUsername', 'placeholder': 'Nombre de Usuario'}))
+        password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'id': 'floatingPassword', 'placeholder': 'Contraseña'}))
         
         def login(self, request):
             username = self.cleaned_data.get('username')

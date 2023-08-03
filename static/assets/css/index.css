@@ -23,16 +23,7 @@ section {
     margin-bottom: -1.3rem;
 }
 
-.heading {
-  text-align: center;
-  background: #04471C;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  font-size: 3.5rem;
-  text-transform: uppercase;
-  padding: 1rem;
-}
+
 
 
 
@@ -55,6 +46,13 @@ section {
   height: auto;
 
 }
+.detalles .caja-contenedor .carrusel-class {
+  max-width: 60%;
+  height: 60%;
+  align-items: center;
+  text-align: center;
+  margin-left: 20%;
+}
 .caja-contenedor h1{
   padding-top: 2rem;
   padding-bottom: 1rem;
@@ -66,22 +64,59 @@ section {
   margin-top: -1rem;
 }
 
+.my-custom-carousel .carousel-indicators button {
+  background-color: #33ff00;
+}
+
+
+
 .detalles .carousel {
   align-items: center;
   padding-top: 0rem;
 
 }
 
-
-
-.detalles .caja-contenedor #carouselExampleDark .carousel-item h5 {
-  color: whitesmoke;
+.carousel-inner {
+  position: relative; 
 }
 
-.detalles .caja-contenedor #carouselExampleDark .carousel-item p {
-  color: whitesmoke;
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+.carousel-text-bg {
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 10px; 
+  border-radius: 8px; 
 }
 
+.carousel-control-prev-icon{
+  background-color: #33ff00;
+  border-radius: 3rem;
+}
+.carousel-control-next-icon {
+  background-color: #33ff00;
+  border-radius: 3rem;
+}
+.carousel-img {
+  width: 1200px;
+  height: 800px;
+  object-fit: cover; 
+}
+.detalles .caja-contenedor #carousel .carousel-item h5 {
+  color: rgb(0, 0, 0);
+}
+
+.detalles .caja-contenedor #carousel .carousel-item p {
+  color: rgb(0, 0, 0);
+}
+.detalles .caja-contenedor #carousel .carousel-item h3 {
+  color: rgb(0, 0, 0);
+}
 .detalles .caja-contenedor h1 {
   color: rgb(255, 255, 255);
 
@@ -181,8 +216,9 @@ section {
 }
 
 .footer .caja-contenedor .caja img {
-  width: 200px;
-  margin-left: 6rem;
+  width: 20rem;
+  margin-left: 5rem;
+  border-radius: .7rem;
   align-items: center;
 }
 
@@ -293,9 +329,12 @@ html {
 .custom-navbar .navbar-nav .nav-link {
   color: #ebeaea;
 }
-
+.video{
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+}
 .video h1 {
-
+  color:white;
   text-align: center;
 }
 
@@ -342,31 +381,54 @@ html {
   text-align: center;
   margin-top: 2rem;
 }
-/* Estilos para el menú desplegable */
-/* Estilos para el menú desplegable */
 .dropdown-menu {
   color: black;
-  /* Cambiar el color del texto a negro */
   background-color: white;
-  /* Cambiar el color de fondo a blanco */
 }
 
 #btn-contacto{
   margin-top: 3rem;
 }
 
-.container{
-  margin-top: 20px;
-    /* Ajusta la separación entre el encabezado y el formulario */
-    margin-bottom: 20px;
-}
+
 
 .cont-form {
   margin-bottom: 20px;
 }
 .contactos{
   margin-top: -3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.contactos .btn{
+  margin-top: 3rem;
 }
 .sec-usu{
   margin-top: -2rem;
+}
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.registrar-usuario{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(#7eff70, #00eeff);
+  margin-top:-7rem;
+  padding-bottom: 5rem;
+}
+.registrar-usuario img{
+  width: 30rem;
+  height: 20rem;
+}
+.registrar-usuario .btn{
+  margin-top: 3rem;
+  margin-left: 6rem;
+}
+.card-body h1{
+  margin-left: 7rem;
+  color:#3614e3;
+  margin-top:-5rem;
 }
