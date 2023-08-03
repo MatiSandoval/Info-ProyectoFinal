@@ -2,10 +2,16 @@
 {% load static %}
 
 {% block contenido %}
-    <h2>Editar comentario</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Guardar cambios">
-    </form>
-{% endblock contenido %}
+<section class="edit-com">
+    <div style="text-align: center; margin: 1rem auto; max-width: 400px;">
+        <h2>Editar comentario</h2>
+        <form method="post" style="display: inline-block;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-success" value="Guardar cambios">
+            <a class="btn btn-danger" href="{{ request.GET.next }}">Cancelar</a>
+        </form>
+
+    </div>
+    {% endblock contenido %}
+</section>

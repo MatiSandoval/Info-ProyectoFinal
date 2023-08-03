@@ -1,19 +1,21 @@
 .comentarios-seccion {
     background-color: rgb(39, 181, 91);
+    color: white;
+    margin-top: 20px;
 }
 
 #tituloComentario {
-    color:rgb(46, 110, 33);
+    color: rgb(46, 110, 33);
     background-color: #002c11;
     margin-left: 100px;
     margin-right: 100px;
     border: 10px solid #002c11;
     padding: 10px;
     text-align: center;
-    text-transform: uppercase; /* Convertir el texto a mayúsculas */
-    font-family: 'Arial', sans-serif; /* Fuente personalizada */
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Sombra de texto */
-    padding: 10px; /* Espacio interno para separar del contenido */
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 10px;
 }
 
 .form-box {
@@ -30,21 +32,21 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     padding: 5px;
-    resize: none; /* Evita que se pueda redimensionar manualmente */
-    height: auto; /* Altura automática según el contenido */
-    width: 100%; /* Ajusta el ancho del textarea al 100% del contenedor */
-    max-width: 590px; 
+    resize: none;
+    height: auto;
+    width: 100%;
+    max-width: 590px;
 }
 
 .card-body {
-    flex: 1; /* Ocupar todo el espacio restante en la fila */
-    margin-left: 10px; /* Separación entre la información del usuario y el comentario */
+    flex: 1;
+    margin-left: 10px;
 }
 
 .botones {
-    margin-left: auto; /* Empujar los botones hacia la derecha */
-    display: flex; /* Para que los botones estén en línea */
-    gap: 10px; /* Espacio entre los botones */
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
     align-items: center;
     padding: 10px;
 }
@@ -54,7 +56,7 @@
 }
 
 .btn:hover {
-    transform: scale(1.07); /* Reducir el efecto de agrandamiento en hover */
+    transform: scale(1.07);
 }
 
 .form__title {
@@ -63,7 +65,7 @@
     text-align: left;
 }
 
-.contenedor-comentarios{
+.contenedor-comentarios {
     margin-left: 100px;
     margin-right: 100px;
 }
@@ -76,20 +78,20 @@
     left: 0;
     width: 100%;
     background-color: #002c11;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Efecto de sombra */
-    display: flex; /* Para utilizar el modelo de caja flexible */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
     align-items: center;
-} 
+}
 
 .user-info {
-    display: flex; /* Para utilizar el modelo de caja flexible */
-    align-items: center; /* Centrar verticalmente los elementos */
+    display: flex;
+    align-items: center;
     font-size: 25px;
     font-weight: bold;
     color: #777777;
 }
 
-.info-user-wap{
+.info-user-wap {
     color: white;
     background-color: #04471C;
     border-radius: 15px;
@@ -104,14 +106,38 @@
 }
 
 .info-user-wap img {
-    width: 35px; /* Establecer el ancho de la imagen */
-    height: 35px; /* Establecer la altura de la imagen (opcional) */
-    border-radius: 50%; 
-    margin-right: 10px; 
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .comentario-box {
     margin-bottom: 100px;
     margin-left: 100px;
     margin-right: 100px;
+}
+
+.comment-form {
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.custom-textarea {
+    margin-top: 3rem;
+    background-color: #002c11;
+    color: white;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    resize: none;
+    height: auto;
+    width: 100%;
+    max-width: 590px;
+}
+
+.edit-com {
+    margin-top: -1rem;
 }

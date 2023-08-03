@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-
+<section class="elim-com">
 <form method="post">
    {% csrf_token %}
-   <div class="main-container" style="text-align: center; margin-top: 12%; margin-bottom: 12%;">
-        <h3><br><br><br><br>Esta seguro que desea eliminar el comentario</h3>
+   <div class="main-container" style="text-align: center; ">
+        <h3><br><br><br><br><h3>Esta seguro que desea eliminar el comentario</h3>
         <input class="btn btn-danger" type="submit" value="Si, eliminar">
-        </input>
-        <a class="btn btn-success" href="{% url 'apps.articulo:articulos' %}">Cancelar</a>
+        <a class="btn btn-success" href="{{ request.GET.next }}">Cancelar</a>
     </div>
 </form>
-
+</section>
 {% endblock contenido %}
