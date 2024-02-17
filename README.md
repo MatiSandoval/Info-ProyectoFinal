@@ -9,8 +9,7 @@ positivamente a la protección del medio ambiente.
 
 Tecnologías Utilizadas: Django, Python, SQL Server, HTML, CSS, JavaScript.
 
-Link al video en Youtube del funcionamiento de la página y pruebas técnicas: https://www.youtube.com/watch?v=o-hMjOobygw&ab_channel=FrancoMedinaG%C3%B3mez
-
+Link al video en Youtube del funcionamiento de la página y pruebas técnicas: https://youtu.be/qS3QQ8VlTQo?si=XJzrT_08ifQggkTH
 Link para probar la página: http://matisandoval.pythonanywhere.com/
 ![1](https://github.com/MatiSandoval/Info-ProyectoFinal/assets/84159947/464afa50-14fb-43a0-981a-d85b640d60e5)
 ![2](https://github.com/MatiSandoval/Info-ProyectoFinal/assets/84159947/86f1095f-2ff6-48a0-8152-110c477fb50e)
